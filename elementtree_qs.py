@@ -67,7 +67,12 @@ for birthplace in root.iterfind('real_person:actor/real_person:birthplace', ns):
 
 print "\nWalk tree:"
 for actor in root.findall('real_person:actor', ns):
-    print actor.attrib['name'], "of", actor.find('real_person:birthplace', ns).text
+    #print actor.attrib['name'], "of", actor.find('real_person:birthplace', ns).text
+    #get and findtext support returning a default value if not found
+    #if a default is not set for findtext and a namespace is required,
+    #use the named argument 'namespaces'  Ex. namespaces=ns
+    #this appears to be missing from the 2.7 documentation but is present in 3.3+
+    print actor.get('name', 'Default Name'), "of", actor.findtext('real_person:birthplace', 'Default Place', ns)
     for char in actor.findall('role:character', ns):
         print ' |-->', char.text
 
