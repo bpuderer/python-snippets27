@@ -77,24 +77,24 @@ for actor in root.findall('real_person:actor', ns):
         print ' |-->', char.text
 
 print "\nWhich character(s) did Eric Idle play?"
-for result in root.findall(".//*[@name='Eric Idle']/role:character", ns):
+for result in root.findall("./real_person:actor[@name='Eric Idle']/role:character", ns):
     #printing tag is helpful when debugging xpath
     print result.text
 
 print "\nWhich actor(s) played Robin Hood?"
-for result in root.findall(".//*[role:character='Robin Hood']", ns):
+for result in root.findall("./real_person:actor[role:character='Robin Hood']", ns):
     #print result.attrib['name']
     #get can return a default value if attribute not found
     print result.get('name')
 
 print "\nWhich actor(s) played King Arthur?"
-for result in root.findall(".//*[role:character='King Arthur']", ns):
+for result in root.findall("./real_person:actor[role:character='King Arthur']", ns):
     print result.attrib['name']
 
 print "\nWhere are the actor(s) from who played King Arthur?"
-for result in root.findall(".//*[role:character='King Arthur']/real_person:birthplace", ns):
+for result in root.findall("./real_person:actor[role:character='King Arthur']/real_person:birthplace", ns):
     print result.text
 
 print "\nLast role listed for each actor:"
-for result in root.findall(".//real_person:actor/role:character[last()]", ns):
+for result in root.findall("./real_person:actor/role:character[last()]", ns):
     print result.text
