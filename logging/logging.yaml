@@ -1,0 +1,21 @@
+version: 1
+formatters:
+    form01:
+        format: "%(asctime)s.%(msecs)03dZ|%(levelname)s|%(message)s"
+        datefmt: "%Y-%m-%dT%H:%M:%S"
+handlers:
+    hand01:
+        class: logging.handlers.RotatingFileHandler
+        level: DEBUG
+        formatter: form01
+        filename: logging_dictconfig_qs.log
+        maxBytes: 1048576
+        backupCount: 5
+loggers:
+    log01:
+        level: DEBUG
+        propagate: no
+        handlers: [hand01]
+root:
+    level: DEBUG
+    handlers: [hand01]
