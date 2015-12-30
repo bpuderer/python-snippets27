@@ -11,10 +11,19 @@ handlers:
         filename: logging_dictconfig_qs.log
         maxBytes: 1048576
         backupCount: 5
+    hand02:
+        class: logging.handlers.TimedRotatingFileHandler
+        level: DEBUG
+        formatter: form01
+        filename: logging_dictconfig_qs.log
+        when: h
+        interval: 1
+        backupCount: 24
+        utc: true
 loggers:
     log01:
         level: DEBUG
-        propagate: no
+        propagate: false
         handlers: [hand01]
 root:
     level: DEBUG
