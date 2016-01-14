@@ -11,6 +11,13 @@ for idx, direction in enumerate(cardinal_directions):
 print "13 in base 10 is", hex(13), "in hexadecimal"
 
 
+#format
+print "and {} for {} completely {}".format("now", "something", "different")
+print "and {when} for {1} completely {0}".format("different", "something", when="now")
+print "{:0>+8.2f}".format(3.14159)
+print format(42, "08x")
+
+
 #range and xrange
 #http://stackoverflow.com/a/135114
 print range(10, 0, -2)
