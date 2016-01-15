@@ -59,3 +59,26 @@ def ends_in_r(x):
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']
 print filter(ends_in_r, months)
+print filter((lambda x: x[-1] == 'r'), months)
+
+
+#isinstance
+class Test1(object):
+    pass
+
+class Test2(Test1):
+    pass
+
+a=Test1()
+b=Test2()
+
+print "Test2 is derived from Test1.  a is instance of Test1, b is instance of Test2"
+
+print "type(a) is Test1:", type(a) is Test1
+print "type(b) is Test1:", type(b) is Test1
+print "type(a) is Test2:", type(a) is Test2
+print "type(b) is Test2:", type(b) is Test2
+print "isinstance(a, Test1):", isinstance(a, Test1)
+print "isinstance(b, Test1):", isinstance(b, Test1)
+print "isinstance(a, Test2):", isinstance(a, Test2)
+print "isinstance(b, Test2):", isinstance(b, Test2)
