@@ -60,15 +60,17 @@ if result:
 print re.split(r'\W+', text)
 
 
-text = "abXLIVdefg abcdefg abczdefg abzcdefg abdefg abczcdefg abzczdefg"
+text = "1abXLIVdefg 2abcdefg 3abczdefg 4abzcdefg 5abdefg 6abczcdefg 7abzczdefg"
 
-print re.sub(r'b.*?d', 'bcd', text)
-print re.subn(r'b.*?d', 'bcd', text)
+#pattern to ensure a single 'c' in between 'b' and 'd'
+#using numbers and caps for illustration
+#pattern won't make a sub on 'abcdefg' like r'b.*?d' would
+print re.sub(r'bd|b[^c].*?d|bc[^d]+?d', 'BCD', text)
+print re.subn(r'bd|b[^c].*?d|bc[^d]+?d', 'BCD', text)
 
 #can specify max number of replacements
-#would be better if pattern did not match bcd
-print re.sub(r'b.*?d', 'bcd', text, 3)
-print re.subn(r'b.*?d', 'bcd', text, 3)
+print re.sub(r'bd|b[^c].*?d|bc[^d]+?d', 'BCD', text, 3)
+print re.subn(r'bd|b[^c].*?d|bc[^d]+?d', 'BCD', text, 3)
 
 
 text = "It's got a cop motor, a 440 cubic inch plant, it's got cop tires, cop suspensions, cop shocks."
