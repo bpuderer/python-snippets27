@@ -1,0 +1,86 @@
+import re
+
+"""
+Use raw string notation for regex patterns
+to avoid collisions with python special characters
+
+'\' escape character
+
+'.' any char except newline
+\d decimal digit, [0-9]
+\D non-digit, [^0-9]
+\s whitespace, [ \t\n\r\f\v]
+\S non-whitespace, [^ \t\n\r\f\v]
+\w word, [a-zA-Z0-9_]
+\W non-word, [^a-zA-Z0-9_]
+
+\b word boundaries (as defined as any edge between a \w and \W)
+\B non-word-boundaries
+
+'*' 0 or more
+'+' 1 or more
+'?' 0 or 1
+'*?', '+?', '??' non greedy versions
+
+'^' start of string
+'$' end of string
+\A matches only at the start of the string
+\Z matches only at the end of the string
+
+'{m}'  exactly m instances
+'{m,}' at least m instances
+'{m,n}' between m and n (inclusive) instances
+'{m,n}?' non-greedy version
+
+[] set of chars, '-' for range, '^' for not, [aeiou], [^aeiou], [a-z]
+| or of two regex, A|B
+() capture group
+
+"""
+
+
+text = "Nobody  with a good car needs to be justified"
+
+#match looks for a match at *beginning* of string
+result = re.match(r'.*good (\w+)', text)
+if result:
+    print result.group(1)
+
+#search looks for first match *anywhere* in string starting at beginning
+result = re.search(r'good (\w+)', text)
+if result:
+    print result.group(1)
+
+#compiling not necessary for scripts with just a few regex
+pattern = re.compile(r'good (\w+)')
+result = pattern.search(text)
+if result:
+    print result.group(1)
+
+print re.split(r'\W+', text)
+
+
+text = "abXLIVdefg abcdefg abczdefg abzcdefg abdefg abczcdefg abzczdefg"
+
+print re.sub(r'b.*?d', 'bcd', text)
+print re.subn(r'b.*?d', 'bcd', text)
+
+#can specify max number of replacements
+#would be better if pattern did not match bcd
+print re.sub(r'b.*?d', 'bcd', text, 3)
+print re.subn(r'b.*?d', 'bcd', text, 3)
+
+
+text = "It's got a cop motor, a 440 cubic inch plant, it's got cop tires, cop suspensions, cop shocks."
+
+print re.findall(r'cop \w+', text)
+
+for m in re.finditer(r'cop \w+', text):
+    print m.group(0)
+
+
+#for matching a string that might have regex metachars
+print re.escape('.*good \w+')
+
+#clear regex cache
+re.purge()
