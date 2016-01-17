@@ -18,6 +18,14 @@ print "{:0>+8.2f}".format(3.14159)
 print format(42, "08x")
 
 
+#dir
+print dir()
+print dir({})
+print dir(list)
+import re
+print dir(re)
+
+
 #range and xrange
 #http://stackoverflow.com/a/135114
 print range(10, 0, -2)
