@@ -1,6 +1,4 @@
-import re
-
-"""
+r"""
 Use raw string notation for regex patterns
 to avoid collisions with python special characters
 
@@ -35,9 +33,9 @@ to avoid collisions with python special characters
 [] set of chars, '-' for range, '^' for not, [aeiou], [^aeiou], [a-z]
 | or of two regex, A|B
 () capture group
-
 """
 
+import re
 
 text = "Nobody  with a good car needs to be justified"
 
@@ -50,6 +48,11 @@ if result:
 result = re.search(r'good (\w+)', text)
 if result:
     print result.group(1)
+
+#named group
+result = re.search(r'good (?P<goodthing>\w+)', text)
+if result:
+    print result.group('goodthing')
 
 #compiling not necessary for scripts with just a few regex
 pattern = re.compile(r'good (\w+)')
@@ -73,7 +76,7 @@ print re.sub(r'bd|b[^c].*?d|bc[^d]+?d', 'BCD', text, 3)
 print re.subn(r'bd|b[^c].*?d|bc[^d]+?d', 'BCD', text, 3)
 
 
-text = "It's got a cop motor, a 440 cubic inch plant, it's got cop tires, cop suspensions, cop shocks."
+text = "It's got a cop motor, a 440-cubic-inch plant. It's got cop tires, cop suspension, cop shocks."
 
 print re.findall(r'cop \w+', text)
 
@@ -82,7 +85,7 @@ for m in re.finditer(r'cop \w+', text):
 
 
 #for matching a string that might have regex metachars
-print re.escape('.*good \w+')
+print re.escape(r'.*good \w+')
 
 #clear regex cache
 re.purge()
