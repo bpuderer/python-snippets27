@@ -51,23 +51,29 @@ print "to dictionary:", dict(zip(list_a, list_b))
 print "unzipped:", zip(*zipped)
 
 
-#map
+#map- apply function to every item of iterable and return list
 def double(x):
     return x*2
 
 numbers = [9, 4, 17]
 print map(double, numbers)
-print map((lambda x: x*2), numbers)
+print map(lambda x: x*2, numbers)
 
 
-#filter
+#filter- return list of items of iterable where function returns true
 def ends_in_r(x):
     return x[-1] == 'r'
 
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
           'August', 'September', 'October', 'November', 'December']
 print filter(ends_in_r, months)
-print filter((lambda x: x[-1] == 'r'), months)
+print filter(lambda x: x[-1] == 'r', months)
+
+
+#all- return true if all items of iterable are true
+print all(x[-1] == 'r' for x in months)
+#any- return true if any item of iterable is true
+print any(x[-1] == 'r' for x in months)
 
 
 #isinstance
