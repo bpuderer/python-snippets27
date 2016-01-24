@@ -70,6 +70,10 @@ print filter(ends_in_r, months)
 print filter(lambda x: x[-1] == 'r', months)
 
 
+#reduce- reduce items of iterable to single val with function with 2 args
+print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
+
+
 #all- return true if all items of iterable are true
 print all(x[-1] == 'r' for x in months)
 #any- return true if any item of iterable is true
