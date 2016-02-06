@@ -1,14 +1,18 @@
 import argparse
 
-#python argparse_qs.py --optstr optstrval -n1 n1val --reqstr regstrval --destspecified 1 --storetrue --storefalse --constant --port 8080 --pi 3.14157 --loglevel DEBUG --twovals 2 3 --zerotomanyvals 4 5 6 --onetomanyvals 7 --zerooroneval --metavarex 7
-#python argparse_qs.py --optstr optstrval -name1 n1val --reqstr regstrval --destspecified 1 --storetrue --port 8080 --pi 3.14157 --twovals 2 3 --zerotomanyvals 4 --onetomanyvals 7 8 --metavarex 7
+#python argparse_qs.py posstrval --optstr optstrval -n1 n1val --reqstr regstrval --destspecified 1 --storetrue --storefalse --constant --port 8080 --pi 3.14157 --loglevel DEBUG --twovals 2 3 --zerotomanyvals 4 5 6 --onetomanyvals 7 --zerooroneval --metavarex 7
+#python argparse_qs.py posstrval --optstr optstrval -name1 n1val --reqstr regstrval --destspecified 1 --storetrue --port 8080 --pi 3.14157 --twovals 2 3 --zerotomanyvals 4 --onetomanyvals 7 8 --metavarex 7
 
 
 parser = argparse.ArgumentParser(description='argparse module demo')
 
 
 #required=False, action=store and type=str are defaults
+#optional arguments begin with '-'
 parser.add_argument("--optstr")
+
+#positional arguments do not begin with '-'
+parser.add_argument("posstr")
 
 #multiple option strings
 parser.add_argument("-name1", "-n1")
@@ -57,6 +61,7 @@ args = parser.parse_args()
 
 
 print "args.optstr:", args.optstr
+print "args.posstr:", args.posstr
 print "args.name1:", args.name1
 print "args.reqstr:", args.reqstr
 print "args.ds:", args.ds
