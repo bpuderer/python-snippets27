@@ -1,0 +1,159 @@
+{  
+   "swagger":"2.0",
+   "info":{  
+      "title":"Books API",
+      "description":"API used to demo some python test frameworks.",
+      "version":"1.0"
+   },
+   "host":"localhost:1234",
+   "basePath":"/",
+   "schemes":[  
+      "http"
+   ],
+   "paths":{  
+      "/books":{  
+         "post":{  
+            "description":"Add book to library",
+            "operationId":"addBook",
+            "consumes":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "description":"Book to be added",
+                  "in":"body",
+                  "name":"body",
+                  "required":true,
+                  "schema":{  
+                     "$ref":"#/definitions/bookType"
+                  }
+               }
+            ],
+            "responses":{  
+               "201":{  
+                  "description":"Successfully added book"
+               },
+               "400":{  
+                  "description":"Malformed bookType JSON"
+               },
+               "409":{  
+                  "description":"Book already exists with specified ISBN10"
+               }
+            }
+         },
+         "get":{  
+            "description":"Retrieve all books",
+            "operationId":"getAllBooks",
+            "produces":[  
+               "application/json"
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"All books returned successfully",
+                  "schema":{  
+                     "$ref":"#/definitions/booksType"
+                  }
+               }
+            }
+         },
+         "delete":{  
+            "description":"Remove all books",
+            "operationId":"removeAllBooks",
+            "responses":{  
+               "200":{  
+                  "description":"Successfully removed all books"
+               }
+            }
+         }
+      },
+      "/books/{id}":{  
+         "get":{  
+            "description":"Retrieve book",
+            "operationId":"getBook",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "description":"ISBN10 of book to retrieve",
+                  "in":"path",
+                  "name":"id",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully retrieved book",
+                  "schema":{  
+                     "$ref":"#/definitions/bookType"
+                  }
+               },
+               "404":{  
+                  "description":"Book not found"
+               }
+            }
+         },
+         "delete":{  
+            "description":"Remove book",
+            "operationId":"deleteBook",
+            "parameters":[  
+               {  
+                  "description":"ISBN10 of book to delete",
+                  "in":"path",
+                  "name":"id",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Successfully removed book"
+               },
+               "404":{  
+                  "description":"Book not found"
+               }
+            }
+         }
+      }
+   },
+   "definitions":{  
+      "idType":{  
+         "type":"object",
+         "required":[  
+            "ISBN10"
+         ],
+         "properties":{  
+            "ISBN10":{  
+               "type":"string"
+            }
+         }
+      },
+      "bookType":{  
+         "type":"object",
+         "required":[  
+            "identifier",
+            "title"
+         ],
+         "properties":{  
+            "identifier":{  
+               "$ref":"#/definitions/idType"
+            },
+            "title":{  
+               "type":"string"
+            }
+         }
+      },
+      "booksType":{  
+         "type":"object",
+         "properties":{  
+            "books":{  
+               "type":"array",
+               "items":{  
+                  "$ref":"#/definitions/bookType"
+               }
+            }
+         }
+      }
+   }
+}
