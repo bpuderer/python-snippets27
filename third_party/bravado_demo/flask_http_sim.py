@@ -94,7 +94,4 @@ if __name__ == '__main__':
     parser.add_argument("--ip", default="localhost")
     parser.add_argument("--port", type=int, default="1234")
     args = parser.parse_args()
-    IP = args.ip
-    PORT = args.port
-
-    app.run(host=IP, port=PORT, debug=True)
+    app.run(host=args.ip, port=args.port, debug=True)
