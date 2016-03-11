@@ -4,7 +4,7 @@ import ConfigParser
 
 
 config = ConfigParser.SafeConfigParser(allow_no_value=True)
-config.read('settings.cfg')
+config.read('settings.ini')
 
 print "\ndefaults:", config.defaults()
 
