@@ -1,3 +1,6 @@
+import calendar
+
+
 #enumerate
 print list(enumerate("abcdefg"))
 print list(enumerate("abcdefg", start=2))
@@ -64,8 +67,7 @@ print map(lambda x: x*2, numbers)
 def ends_in_r(x):
     return x[-1] == 'r'
 
-months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-          'August', 'September', 'October', 'November', 'December']
+months = list(calendar.month_name)[1:]
 print filter(ends_in_r, months)
 print filter(lambda x: x[-1] == 'r', months)
 
@@ -87,8 +89,8 @@ class Test1(object):
 class Test2(Test1):
     pass
 
-a=Test1()
-b=Test2()
+a = Test1()
+b = Test2()
 
 print "Test2 is derived from Test1.  a is instance of Test1, b is instance of Test2"
 
@@ -100,3 +102,17 @@ print "isinstance(a, Test1):", isinstance(a, Test1)
 print "isinstance(b, Test1):", isinstance(b, Test1)
 print "isinstance(a, Test2):", isinstance(a, Test2)
 print "isinstance(b, Test2):", isinstance(b, Test2)
+
+
+#clear a list
+a_list = [1, 2, 3, 4]
+print "a_list:", a_list
+del a_list[:]
+print "a_list cleared:", a_list
+
+
+#clear a dictionary
+a_dict = {'a': 1, 'b': 2}
+print "a_dict:", a_dict
+a_dict.clear()
+print "a_dict cleared:", a_dict
