@@ -3,13 +3,21 @@ import time as time_module
 import calendar
 
 
+# datetime and time objects use tzinfo objects to
+# make them aware.
+# tzinfo is an abstract base class and you must provide
+# an implementation.  see pytz and dateutil
+# work in utc and only convert to localtime when
+# generating output for humans.
+
+
 # class datetime.datetime(year, month, day[, hour[, minute[, second[, microsecond[, tzinfo]]]]])
 print "datetime:"
 
 # current local datetime
 print datetime.today()
 
-# current local datetime with. tz optional
+# current local datetime. tz optional
 print datetime.now()
 
 # current UTC datetime
