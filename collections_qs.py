@@ -1,4 +1,4 @@
-from collections import defaultdict, OrderedDict, Counter, namedtuple
+from collections import defaultdict, OrderedDict, Counter, namedtuple, deque
 
 
 # defaultdict can define default_factory where
@@ -71,5 +71,31 @@ print p2
 print p1.x, p1[1]
 print p2.x, p2.y
 
+print '---'
 
-# deque
+
+# deque - pronounced 'deck', thread-safe
+d = deque('efg')
+d.append('h')
+d.appendleft('d')
+print d
+# extend and extendleft take an iterable
+d.extend('ijk')
+# left appends in the arg in reverse order to the front
+d.extendleft('cba')
+print d
+print d.pop()
+print d.popleft()
+print d
+d.remove('i')
+print d
+
+# when new items are added beyond maxlen an equal number
+# are removed from the opposite end
+d = deque(maxlen=3)
+d.extend('abc')
+print d
+d.append('d')
+print d
+d.appendleft('a')
+print d
