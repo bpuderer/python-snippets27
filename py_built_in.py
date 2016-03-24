@@ -31,6 +31,8 @@ print dir(re)
 
 #range and xrange
 #http://stackoverflow.com/a/135114
+#xrange renamed to range in python 3
+#to gen a list with range in python 3: list(range(n))
 print range(10, 0, -2)
 
 print type(xrange(10, 0, -2))
@@ -45,13 +47,18 @@ while not user_input:
 print "You entered:", user_input
 
 
-#zip
+#zip- from PSF- returns list of tuples where the i-th tuple contains
+#the i-th element from each of the argument sequences or iterables
+#in python 3, zip returns an iterator instead of a list
 list_a = ['a', 'b', 'c']
 list_b = [0, 1, 2]
 zipped = zip(list_a, list_b)
 print list_a, "and", list_b, "zipped:", zipped
 print "to dictionary:", dict(zip(list_a, list_b))
 print "unzipped:", zip(*zipped)
+
+mtrx = [[1, 2, 3], [4, 5, 6]]
+print "matrix:", mtrx, "transposed:", zip(*mtrx)
 
 
 #map- apply function to every item of iterable and return list
@@ -80,6 +87,16 @@ print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
 print all(x[-1] == 'r' for x in months)
 #any- return true if any item of iterable is true
 print any(x[-1] == 'r' for x in months)
+
+
+#sorted- return sorted list
+#key is a one arg function that specifies element's comparison key
+lod = [{'a': 1}, {'a': 0}, {'a': -1}]
+print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
+print "reverse sorted:", sorted(lod, key=lambda x: x['a'], reverse=True)
+
+a_list = ['a', 'ab', 'c', 'abcd', 'abc', 'a']
+print "list:", a_list, "sorted by element length:", sorted(a_list, key=len)
 
 
 #isinstance
