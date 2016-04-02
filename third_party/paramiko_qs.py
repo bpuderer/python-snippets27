@@ -1,30 +1,32 @@
 import paramiko
 
+
 paramiko.util.log_to_file('paramiko_qs.log')
 
-ssh = paramiko.SSHClient()
-
-ssh.load_system_host_keys()
+client = paramiko.SSHClient()
+client.load_system_host_keys()
 #only use the following line if you trust the server you're connecting to
-#ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
+client.connect('192.168.1.100', username='usr1', password='pswd')
 
-ssh.connect('192.168.1.100', username='usr1', password='pswd')
-stdin, stdout, stderr = ssh.exec_command('whoami')
-lines = stdout.readlines()
-ssh.close()
-for line in lines:
+# I/O streams returned as file-like objects
+stdin, stdout, stderr = client.exec_command('ls -l')
+
+#print stdout.readlines()
+for line in stdout:
     print line.strip('\n')
 
+client.close()
 
-ssh.connect('192.168.1.100', username='usr1', password='pswd')
-stdin, stdout, stderr = ssh.exec_command('sudo -S whoami')
+
+client.connect('192.168.1.100', username='usr1', password='pswd')
+stdin, stdout, stderr = client.exec_command('sudo -S whoami')
 stdin.write('supswd'+'\n')
 stdin.flush()
-lines = stdout.readlines()
-ssh.close()
-for line in lines:
+for line in stdout:
     print line.strip('\n')
+client.close()
 
 
 ########################################
