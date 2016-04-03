@@ -1,6 +1,6 @@
-import datetime
-import pytz
+from datetime import datetime
 import time
+import pytz
 
 
 # work in utc and only convert to localtime when
@@ -12,12 +12,12 @@ eastern = pytz.timezone('US/Eastern')
 
 
 # UTC aware datetime
-# DONT use timezones with daylight savings time
+# DONT DONT DONT use timezones with daylight savings time
 # with the tzinfo argument of the datetime constructor.
-print datetime.datetime(1991, 8, 25, 20, 57, 8, tzinfo=utc)
+print datetime(1991, 8, 25, 20, 57, 8, tzinfo=utc)
 
 # UTC aware datetime from POSIX timestamp
-print datetime.datetime.fromtimestamp(time.time(), utc)
+print datetime.fromtimestamp(time.time(), utc)
 
 
 # create an aware datetime in a given timezone from wall time.
@@ -26,14 +26,14 @@ print datetime.datetime.fromtimestamp(time.time(), utc)
 # if not passed or set to False, ambiguous timestamps are set
 # to STD.  is_dst=True, DST.
 # if is_dst=None, pytz.tzinfo.AmbiguousTimeError is raised
-print eastern.localize(datetime.datetime(1991, 8, 25, 16, 57, 8))
+print eastern.localize(datetime(1991, 8, 25, 16, 57, 8))
 
 
 # create an aware datetime for this instant in a given timezone
-now_eastern = datetime.datetime.now(eastern)
+now_eastern = datetime.now(eastern)
 print now_eastern.isoformat()
 
-now_utc = datetime.datetime.now(utc)
+now_utc = datetime.now(utc)
 print now_utc.isoformat()
 
 
