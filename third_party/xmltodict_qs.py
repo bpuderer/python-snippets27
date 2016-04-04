@@ -7,11 +7,11 @@ simple_xml = """<?xml version="1.0" encoding="UTF-8"?>
    <books>
       <book format="hardcover">
          <title>Wise Blood</title>
-         <author>Flannery O'Connor</author>
+         <author format="First Name Last Name">Flannery O'Connor</author>
       </book>
       <book format="paperback">
          <title>The Moviegoer</title>
-         <author>Walker Percy</author>
+         <author format="First Name Last Name">Walker Percy</author>
       </book>
    </books>
 </library>"""
@@ -66,3 +66,74 @@ for actor in actors_ns['actors']['actor']:
     #for role in actor[ns['http://characters.example.com']+':character']:
         print role,
     print
+
+
+print "\n***REVERSE***\n"
+
+
+# reverse, dict to xml
+# can also pass collections.OrderedDict
+simple_dict = {
+    "library": {
+        "@name": "Algiers Regional Library",
+        "books": {
+            "book": [{
+                "@format": "hardcover",
+                "title": "Wise Blood",
+                "author": {
+                    "@format": "First Name Last Name",
+                    "#text": "Flannery O'Connor"
+                }
+            }, {
+                "@format": "paperback",
+                "title": "The Moviegoer",
+                "author": {
+                    "@format": "First Name Last Name",
+                    "#text": "Walker Percy"
+                }
+            }]
+        }
+    }
+}
+print xmltodict.unparse(simple_dict, pretty=True)
+
+
+ns_dict = {
+    "actors": {
+        "@xmlns": "http://people.example.com",
+        "@xmlns:fictional": "http://characters.example.com",
+        "actor": [
+            {
+                "@name": "John Cleese",
+                "birthplace": "Weston-super-Mare, Somerset, England",
+                "fictional:character": [
+                    "Black Knight",
+                    "First Centurion",
+                    "Robin Hood",
+                    "Archie Leach"
+                ]
+            },
+            {
+                "@name": "Eric Idle",
+                "birthplace": "South Shields, County Durham, England",
+                "fictional:character": [
+                    "The Dead Collector",
+                    "Harry the Haggler",
+                    "Gunther",
+                    "Berthold"
+                ]
+            },
+            {
+                "@name": "Michael Palin",
+                "birthplace": "Broomhill, Sheffield, West Riding of Yorkshire, England",
+                "fictional:character": [
+                    "Sir Galahad",
+                    "Mr. Big Nose",
+                    "Jack Lint",
+                    "Ken Pile"
+                ]
+            }
+        ]
+    }
+}
+print xmltodict.unparse(ns_dict, pretty=True)
