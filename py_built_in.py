@@ -133,3 +133,14 @@ a_dict = {'a': 1, 'b': 2}
 print "a_dict:", a_dict
 a_dict.clear()
 print "a_dict cleared:", a_dict
+
+
+#reverse a sequence
+a_str = 'abc123'
+a_list = [0, 1, 2, 3]
+print a_str, "reversed:", a_str[::-1]
+print a_list, "reversed:", a_list[::-1]
+
+print a_list, "reversed in place:",
+a_list.reverse()
+print a_list
