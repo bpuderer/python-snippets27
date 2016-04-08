@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 #enhanced example based on Python Software Foundation xml.etree.ElementTree doc
 #https://docs.python.org/2/library/xml.etree.elementtree.html#parsing-xml-with-namespaces
+#https://docs.python.org/2/library/xml.etree.elementtree.html#xpath-support
 
 ns = {'real_person': 'http://people.example.com',
       'role': 'http://characters.example.com'}
@@ -39,6 +40,12 @@ xml_text = """<?xml version="1.0"?>
         <fictional:character>Jack Lint</fictional:character>
         <fictional:character>Ken Pile</fictional:character>
     </actor>
+    <extras>
+        <artist name="Mel Ferrer">
+            <birthplace>Santa Barbara, California, U.S.</birthplace>
+            <fictional:character>King Arthur</fictional:character>
+        </artist>
+    </extras>
 </actors>
 """
 
@@ -98,3 +105,13 @@ for result in root.findall("./real_person:actor[role:character='King Arthur']/re
 print "\nLast role listed for each actor:"
 for result in root.findall("./real_person:actor/role:character[last()]", ns):
     print result.text
+
+# selects all birthplace elements anywhere in tree
+print "\nAll birthplaces:"
+for result in root.findall(".//real_person:birthplace", ns):
+    print result.text
+
+# selects all elements that have a character subelement set to King Arthur
+print "\nWho played King Arthur?"
+for result in root.findall(".//*[role:character='King Arthur']", ns):
+    print result.attrib['name']
