@@ -42,7 +42,7 @@ xml_text = """<?xml version="1.0"?>
     </actor>
     <extras>
         <artist name="Mel Ferrer">
-            <birthplace>Santa Barbara, California, U.S.</birthplace>
+            <birthplace>Elberon, New Jersey, U.S.</birthplace>
             <fictional:character>King Arthur</fictional:character>
         </artist>
     </extras>
