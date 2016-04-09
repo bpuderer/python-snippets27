@@ -22,6 +22,6 @@ for actor in actor_data:
 #or by 
 #actor_n.attrib['name'] = actor['name']
 
-xml_str = ET.tostring(actors, 'utf-8')
+xml_str = ET.tostring(actors, encoding='utf-8')
 formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="    ")
 print formatted_xml
