@@ -51,3 +51,11 @@ def foo3():
 
 foo3()
 print baz
+
+
+
+# one item tuples need a trailing comma
+a = (3)
+print a, type(a)
+b = (3,)
+print b, type(b)
