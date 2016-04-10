@@ -82,6 +82,8 @@ print "Characters:", tree.xpath('//role:character/text()', namespaces=ns)
 # float is always returned if XPath result is numeric
 print "Actor count:", int(tree.xpath('count(//real_person:actor)', namespaces=ns))
 
+print "Character Jack Lint found:", tree.xpath("boolean(//role:character[text()='Jack Lint'])", namespaces=ns)
+
 # can make a callable function from an XPath expression
 # better performance when evaluating the same XPath over and over
 michael_palin_found = etree.XPath("boolean(//real_person:actor[@name='Michael Palin'])", namespaces=ns)
