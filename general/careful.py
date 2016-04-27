@@ -59,3 +59,13 @@ a = (3)
 print a, type(a)
 b = (3,)
 print b, type(b)
+
+
+
+
+# multiple exceptions for a single except clause
+# requires a parenthesized tuple
+try:
+    raise ValueError('ValueError message')
+except (AssertionError, ValueError) as e:
+    print e
