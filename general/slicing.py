@@ -40,3 +40,20 @@ first_three_reversed = slice(2, None, -1)
 last_three_reversed = slice(None, -4, -1)
 print "first three elements reversed:", a_str[first_three_reversed]
 print "last three elements reversed:", a_str[last_three_reversed]
+
+
+#slicing assignment
+# insert list items into another list
+a_list = ['and', 'something', 'completely', 'different']
+a_list[1:1] = ['now', 'for']
+print a_list
+
+# replace items in list
+a_list = ['and', 'now', 'for', 'everything', 'somewhat', 'different']
+a_list[3:5] = ['something', 'completely']
+print a_list
+
+#remove items in a list
+a_list = ['and', 'now', 'for', 'something', 'this', 'is', 'an', 'ex-parrot', 'completely', 'different']
+a_list[4:8] = []
+print a_list
