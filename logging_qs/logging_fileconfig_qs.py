@@ -2,8 +2,12 @@ import logging
 import logging.config
 import time
 
-logging.config.fileConfig('logging.conf')
-logger = logging.getLogger('log01')
+
+logging.config.fileConfig('logging.cfg')
+logger = logging.getLogger(__name__)
+#https://docs.python.org/2/library/logging.html#formatter-objects
+#see formatTime
+#by default time.localtime() is used
 logging.Formatter.converter = time.gmtime
 
 logger.debug("message at debug level")

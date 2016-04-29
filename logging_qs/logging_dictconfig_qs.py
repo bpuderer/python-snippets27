@@ -3,11 +3,15 @@ import logging.config
 import time
 import yaml
 
-with open("logging.yaml", 'r') as f:
+
+with open('logging.yaml') as f:
     parsed_yaml = yaml.load(f)
 
 logging.config.dictConfig(parsed_yaml)
-logger = logging.getLogger('log01')
+logger = logging.getLogger(__name__)
+#https://docs.python.org/2/library/logging.html#formatter-objects
+#see formatTime
+#by default time.localtime() is used
 logging.Formatter.converter = time.gmtime
 
 logger.debug("message at debug level")

@@ -1,7 +1,7 @@
 version: 1
 formatters:
     form01:
-        format: "%(asctime)s.%(msecs)03dZ|%(levelname)s|%(message)s"
+        format: "%(asctime)s.%(msecs)03dZ|%(name)s|%(levelname)s|%(message)s"
         datefmt: "%Y-%m-%dT%H:%M:%S"
 handlers:
     hand01:

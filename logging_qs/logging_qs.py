@@ -5,7 +5,7 @@ import time
 LOG_FILENAME = "logging_qs.log"
 
 #create logger
-logger = logging.getLogger('MyLogger')
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
 #create handler
@@ -16,10 +16,13 @@ handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=1048576, b
 handler.setLevel(logging.DEBUG)
 
 #create formatter
+#https://docs.python.org/2/library/logging.html#formatter-objects
+#see formatTime
+#by default time.localtime() is used
 logging.Formatter.converter = time.gmtime
 #https://docs.python.org/2/library/logging.html#logrecord-attributes
-#2015-12-29T05:03:21.109Z|DEBUG|message at debug level
-formatter = logging.Formatter('%(asctime)s.%(msecs)03dZ|%(levelname)s|%(message)s', '%Y-%m-%dT%H:%M:%S')
+#2016-04-29T02:47:51.009Z - __main__ - DEBUG - message at debug level
+formatter = logging.Formatter('%(asctime)s.%(msecs)03dZ - %(name)s - %(levelname)s - %(message)s', '%Y-%m-%dT%H:%M:%S')
 
 #add formatter to handler
 handler.setFormatter(formatter)
