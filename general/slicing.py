@@ -53,7 +53,8 @@ a_list = ['and', 'now', 'for', 'everything', 'somewhat', 'different']
 a_list[3:5] = ['something', 'completely']
 print a_list
 
-#remove items in a list
+#remove adjacent items from a list
 a_list = ['and', 'now', 'for', 'something', 'this', 'is', 'an', 'ex-parrot', 'completely', 'different']
+#del a_list[4:8]
 a_list[4:8] = []
 print a_list
