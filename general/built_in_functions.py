@@ -10,6 +10,16 @@ for idx, direction in enumerate(cardinal_directions):
     print idx, direction
 
 
+#iteritems
+a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
+for key, val in a_dict.iteritems():
+    print key, val
+
+#with keys sorted
+for key, val in sorted(a_dict.iteritems()):
+    print key, val
+
+
 #hex
 print "13 in base 10 is", hex(13), "in hexadecimal"
 
@@ -89,7 +99,7 @@ print all(x[-1] == 'r' for x in months)
 print any(x[-1] == 'r' for x in months)
 
 
-#sorted- return sorted list
+#sorted- return sorted list from iterable
 #key is a one arg function that specifies element's comparison key
 lod = [{'a': 1}, {'a': 0}, {'a': -1}]
 print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
@@ -125,6 +135,7 @@ print "isinstance(b, Test2):", isinstance(b, Test2)
 a_list = [1, 2, 3, 4]
 print "a_list:", a_list
 del a_list[:]
+#a_list[:] = [] also cool
 print "a_list cleared:", a_list
 
 
@@ -135,12 +146,9 @@ a_dict.clear()
 print "a_dict cleared:", a_dict
 
 
-#reverse a sequence
-a_str = 'abc123'
+#reverse a list in place
+#also see slicing.py
 a_list = [0, 1, 2, 3]
-print a_str, "reversed:", a_str[::-1]
-print a_list, "reversed:", a_list[::-1]
-
 print a_list, "reversed in place:",
 a_list.reverse()
 print a_list
