@@ -36,3 +36,9 @@ logger.info("message at info level")
 logger.warning("message at warning level")
 logger.error("message at error level")
 logger.critical("message at critical level")
+
+try:
+    raise RuntimeError('message from RuntimeError')
+except RuntimeError:
+    logger.exception('message from Logger.exception()')
+    
