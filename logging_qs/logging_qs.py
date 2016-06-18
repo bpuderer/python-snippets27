@@ -22,7 +22,8 @@ handler.setLevel(logging.DEBUG)
 logging.Formatter.converter = time.gmtime
 #https://docs.python.org/2/library/logging.html#logrecord-attributes
 #2016-04-29T02:47:51.009Z - __main__ - DEBUG - message at debug level
-formatter = logging.Formatter('%(asctime)s.%(msecs)03dZ - %(name)s - %(levelname)s - %(message)s', '%Y-%m-%dT%H:%M:%S')
+formatter = logging.Formatter('%(asctime)s.%(msecs)03dZ - %(name)s - %(levelname)s - %(message)s',
+                              '%Y-%m-%dT%H:%M:%S')
 
 #add formatter to handler
 handler.setFormatter(formatter)
@@ -40,5 +41,9 @@ logger.critical("message at critical level")
 try:
     raise RuntimeError('message from RuntimeError')
 except RuntimeError:
-    logger.exception('message from Logger.exception()')
-    
+    logger.exception('message using logging.exception()')
+
+try:
+    raise ValueError('message from ValueError')
+except ValueError:
+    logger.debug('message using logging.debug() with exc_info', exc_info=True)
