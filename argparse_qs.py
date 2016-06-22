@@ -4,12 +4,12 @@ import argparse
 #python argparse_qs.py posstrval --optstr optstrval -name1 n1val --reqstr regstrval --destspecified 1 --storetrue --port 8080 --pi 3.14157 --twovals 2 3 --zerotomanyvals 4 --onetomanyvals 7 8 --metavarex 7
 
 
-parser = argparse.ArgumentParser(description='argparse module demo')
+parser = argparse.ArgumentParser(description='argparse module demo', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 
 #required=False, action=store and type=str are defaults
 #optional arguments begin with '-'
-parser.add_argument("--optstr")
+parser.add_argument("--optstr", default="foo", help="optional string")
 
 #positional arguments do not begin with '-'
 parser.add_argument("posstr")
