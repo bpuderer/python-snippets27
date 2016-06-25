@@ -87,7 +87,9 @@ def ends_in_r(x):
 months = list(calendar.month_name)[1:]
 print filter(ends_in_r, months)
 print filter(lambda x: x[-1] == 'r', months)
-
+#if function is None then return list of elements that are true
+#see itertools.iterfalse to return false elements
+print filter(None, [True, 0, 1, [0], {}, (9,)])
 
 #reduce- reduce items of iterable to single val with function with 2 args
 print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
