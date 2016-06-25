@@ -133,6 +133,11 @@ print "isinstance(a, Test2):", isinstance(a, Test2)
 print "isinstance(b, Test2):", isinstance(b, Test2)
 
 
+#check all elements are of certain type(s)
+lst = [1, 2, 3.14, 'hey']
+print all(isinstance(x, (int, float, long)) for x in lst)
+
+
 #clear a list
 a_list = [1, 2, 3, 4]
 print "a_list:", a_list
