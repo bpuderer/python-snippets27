@@ -70,6 +70,10 @@ print "unzipped:", zip(*zipped)
 mtrx = [[1, 2, 3], [4, 5, 6]]
 print "matrix:", mtrx, "transposed:", zip(*mtrx)
 
+#iterate over multiple lists
+for item_a, item_b in zip(list_a, list_b):
+    print item_a, item_b
+
 
 #map- apply function to every item of iterable and return list
 def double(x):
