@@ -27,8 +27,11 @@ print calendar.timegm(now_eastern.utctimetuple())
 print calendar.timegm(now_utc.utctimetuple())
 
 
-dt = parse("2016-03-19T17:10:00-04:00")
+dt = parse("2016-03-19T17:10:00.123456-04:00")
 print calendar.timegm(dt.utctimetuple())
+
+#ms since epoch
+print calendar.timegm(dt.utctimetuple()) * 1000 + dt.microsecond/1000
 
 
 

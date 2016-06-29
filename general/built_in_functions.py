@@ -1,4 +1,8 @@
 import calendar
+import itertools
+
+
+months = list(calendar.month_name)[1:]
 
 
 #enumerate
@@ -10,24 +14,11 @@ for idx, direction in enumerate(cardinal_directions):
     print idx, direction
 
 
-#iteritems
-a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
-for key, val in a_dict.iteritems():
-    print key, val
-
-#with keys sorted
-for key, val in sorted(a_dict.iteritems()):
-    print key, val
-
-
 #hex
 print "13 in base 10 is", hex(13), "in hexadecimal"
 
 
 #format
-print "and {} for {} completely {}".format("now", "something", "different")
-print "and {when} for {1} completely {0}".format("different", "something", when="now")
-print "{:0>+8.2f}".format(3.14159)
 print format(42, "08x")
 
 
@@ -75,30 +66,6 @@ for item_a, item_b in zip(list_a, list_b):
     print item_a, item_b
 
 
-#map- apply function to every item of iterable and return list
-def double(x):
-    return x*2
-
-numbers = [9, 4, 17]
-print map(double, numbers)
-print map(lambda x: x*2, numbers)
-
-
-#filter- return list of items of iterable where function returns true
-def ends_in_r(x):
-    return x[-1] == 'r'
-
-months = list(calendar.month_name)[1:]
-print filter(ends_in_r, months)
-print filter(lambda x: x[-1] == 'r', months)
-#if function is None then return list of elements that are true
-#see itertools.iterfalse to return false elements
-print filter(None, [True, 0, 1, [0], {}, (9,)])
-
-#reduce- reduce items of iterable to single val with function with 2 args
-print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
-
-
 #all- return true if all items of iterable are true
 print all(x[-1] == 'r' for x in months)
 #any- return true if any item of iterable is true
@@ -111,8 +78,13 @@ lod = [{'a': 1}, {'a': 0}, {'a': -1}]
 print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
 print "reverse sorted:", sorted(lod, key=lambda x: x['a'], reverse=True)
 
-a_list = ['a', 'ab', 'c', 'abcd', 'abc', 'a']
-print "list:", a_list, "sorted by element length:", sorted(a_list, key=len)
+lst = ['a', 'ab', 'c', 'abcd', 'abc', 'a']
+print "list:", lst, "sorted by element length:", sorted(lst, key=len)
+
+#with keys sorted
+a_dict = {'d': 3, 'a': 0, 'c': 2, 'b': 1}
+for key, val in sorted(a_dict.iteritems()):
+    print key, val
 
 
 #isinstance
@@ -142,24 +114,39 @@ lst = [1, 2, 3.14, 'hey']
 print all(isinstance(x, (int, float, long)) for x in lst)
 
 
-#clear a list
-a_list = [1, 2, 3, 4]
-print "a_list:", a_list
-del a_list[:]
-#a_list[:] = [] also cool
-print "a_list cleared:", a_list
+#sum, min, max
+list_a = [1, 2, 3]
+list_b = [4, 5, 6]
+print sum(itertools.chain(list_a, list_b))
+print sum(itertools.chain(list_a, list_b), 10)
+
+lst = ['100', '2', '33']
+print min(lst)
+#min and max have opt key arg- one arg ordering function
+print min(lst, key=lambda x:int(x))
+
+print max(2001, 42, 2112)
 
 
-#clear a dictionary
-a_dict = {'a': 1, 'b': 2}
-print "a_dict:", a_dict
-a_dict.clear()
-print "a_dict cleared:", a_dict
+#map- apply function to every item of iterable and return list
+def double(x):
+    return x*2
+
+numbers = [9, 4, 17]
+print map(double, numbers)
+print map(lambda x: x*2, numbers)
 
 
-#reverse a list in place
-#also see slicing.py
-a_list = [0, 1, 2, 3]
-print a_list, "reversed in place:",
-a_list.reverse()
-print a_list
+#filter- return list of items of iterable where function returns true
+def ends_in_r(x):
+    return x[-1] == 'r'
+
+print filter(ends_in_r, months)
+print filter(lambda x: x[-1] == 'r', months)
+#if function is None then return list of elements that are true
+#see itertools.iterfalse to return false elements
+print filter(None, [True, 0, 1, [0], {}, (9,)])
+
+
+#reduce- reduce items of iterable to single val with function with 2 args
+print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
