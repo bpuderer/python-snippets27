@@ -25,6 +25,10 @@ for key, val in a_dict.iteritems():
 
 
 #format
+movie = {'title': 'Life of Brian', 'director': 'Terry Jones', 'year': 1979}
+words = ['now', 'something', 'different']
+print "{title} directed by {director} was released in {year}".format(**movie)
+print "and {} for {} completely {}".format(*words)
 print "and {} for {} completely {}".format("now", "something", "different")
 print "and {when} for {1} completely {0}".format("different", "something", when="now")
 print "{:0>+8.2f}".format(3.14159)
@@ -51,3 +55,33 @@ print a, b, c
 
 a, b, (c, d) = lst
 print a, b, c, d
+
+a, b = 1, 2
+print a, b
+a, b = b, a
+print "swapped:", a, b
+
+
+#chained expression
+x = 4
+if 1 < x < 5:
+    print x, 'is between 1 and 5'
+
+
+#conditional expression
+#parentheses for readability, not required
+x = (42 if True else 2001)
+print x
+x = 42 if False else 2001
+print x
+
+
+#setdefault(key[, default])
+#can be used to init mutable dict values
+#if key in dict, return its val
+#if key not in dict, add key, set it to default, and return default
+a_dict = {}
+a_dict.setdefault('lst', []).append('something')
+print a_dict.setdefault('lst', [])
+print a_dict.setdefault('lst2')
+print a_dict
