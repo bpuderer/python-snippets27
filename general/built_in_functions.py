@@ -14,12 +14,11 @@ for idx, direction in enumerate(cardinal_directions):
     print idx, direction
 
 
-#hex
-print "13 in base 10 is", hex(13), "in hexadecimal"
-
-
-#format
-print format(42, "08x")
+#bin, hex, oct, format
+x = 42
+print x, 'in binary is', bin(x), 'and', format(x, 'b'), 'sans prefix'
+print x, 'in hex is', hex(x), 'and', format(x, 'x'), 'sans prefix'
+print x, 'in octal is', oct(x), 'and', format(x, 'o'), 'sans prefix'
 
 
 #dir
