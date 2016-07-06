@@ -113,6 +113,14 @@ lst = [1, 2, 3.14, 'hey']
 print all(isinstance(x, (int, float, long)) for x in lst)
 
 
+#optional default returned instead of raising StopIteration
+#when iterator exhausted
+i = iter([42, 2112])
+print next(i, 'default')
+print next(i, 'default')
+print next(i, 'default')
+
+
 #sum, min, max
 list_a = [1, 2, 3]
 list_b = [4, 5, 6]
