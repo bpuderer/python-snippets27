@@ -34,6 +34,15 @@ print "and {when} for {1} completely {0}".format("different", "something", when=
 print "{:0>+8.2f}".format(3.14159)
 
 
+#str.startswith(prefix[, start[, end]])
+#prefix can be a str, unicode or *tuple*
+#same for endswith
+s = '#abcdef'
+print s.startswith('#')
+#if s.startswith('#') or s.startswith('/'):
+print s.startswith(('#', '/'))
+
+
 #reverse a list in place
 #also see slicing.py
 a_list = [0, 1, 2, 3]
