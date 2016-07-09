@@ -53,6 +53,7 @@ xml_text = """<?xml version="1.0"?>
 #tree = ET.parse('test.xml')
 #root = tree.getroot()
 
+#returns an Element
 root = ET.fromstring(xml_text)
 
 print "root.tag:", root.tag
@@ -64,16 +65,18 @@ for child in root:
 
 print "\nroot[0][2] text:", root[0][2].text
 
+#iter(tag=None)
 print "\nIterate entire tree:"
 for i in root.iter():
     print i.tag, i.attrib, i.text
 
+#iterfind- returns an iterable of all matching subelements
 print "\nList the birthplace of each actor:"
 for birthplace in root.iterfind('real_person:actor/real_person:birthplace', ns):
     print birthplace.text
 
 print "\nWalk tree:"
-for actor in root.findall('real_person:actor', ns):
+for actor in root.iterfind('real_person:actor', ns):
     #print actor.attrib['name'], "of", actor.find('real_person:birthplace', ns).text
     #get and findtext support returning a default value if not found
     #if a default is not set for findtext and a namespace is required,
@@ -84,18 +87,18 @@ for actor in root.findall('real_person:actor', ns):
         print ' |-->', char.text
 
 print "\nWhich character(s) did Eric Idle play?"
-for result in root.findall("./real_person:actor[@name='Eric Idle']/role:character", ns):
+for result in root.iterfind("./real_person:actor[@name='Eric Idle']/role:character", ns):
     #printing tag is helpful when debugging xpath
     print result.text
 
 print "\nWhich actor(s) played Robin Hood?"
-for result in root.findall("./real_person:actor[role:character='Robin Hood']", ns):
+for result in root.iterfind("./real_person:actor[role:character='Robin Hood']", ns):
     #print result.attrib['name']
     #get can return a default value if attribute not found
     print result.get('name')
 
 print "\nWhich actor(s) played King Arthur?"
-for result in root.findall("./real_person:actor[role:character='King Arthur']", ns):
+for result in root.iterfind("./real_person:actor[role:character='King Arthur']", ns):
     print result.attrib['name']
 
 print "\nWhere are the actor(s) from who played King Arthur?"
@@ -103,15 +106,20 @@ for result in root.findall("./real_person:actor[role:character='King Arthur']/re
     print result.text
 
 print "\nLast role listed for each actor:"
-for result in root.findall("./real_person:actor/role:character[last()]", ns):
+for result in root.iterfind("./real_person:actor/role:character[last()]", ns):
     print result.text
 
 # selects all birthplace elements anywhere in tree
 print "\nAll birthplaces:"
-for result in root.findall(".//real_person:birthplace", ns):
+for result in root.iterfind(".//real_person:birthplace", ns):
     print result.text
 
+#findall returns a list of all matching subelements
 # selects all elements that have a character subelement set to King Arthur
 print "\nWho played King Arthur?"
 for result in root.findall(".//*[role:character='King Arthur']", ns):
     print result.attrib['name']
+
+#find returns first matching subelement
+print "\nWho played King Arthur? First match:"
+print root.find(".//*[role:character='King Arthur']", ns).attrib['name']
