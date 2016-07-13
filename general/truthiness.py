@@ -24,3 +24,9 @@ if not {}:
 
 if not set([]):
     print "empty sets are False"
+
+num = 4
+#while num > 0:
+while num:
+    print num
+    num -= 1
