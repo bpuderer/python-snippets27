@@ -1,5 +1,6 @@
 import calendar
 import itertools
+import string
 
 
 months = list(calendar.month_name)[1:]
@@ -15,18 +16,17 @@ for idx, direction in enumerate(cardinal_directions):
 
 
 #bin, hex, oct, format
-x = 42
-print x, 'in binary is', bin(x), 'and', format(x, 'b'), 'sans prefix'
-print x, 'in hex is', hex(x), 'and', format(x, 'x'), 'sans prefix'
-print x, 'in octal is', oct(x), 'and', format(x, 'o'), 'sans prefix'
+n = 42
+print n, 'in binary is', bin(n), 'and', format(n, 'b'), 'sans prefix'
+print n, 'in hex is', hex(n), 'and', format(n, 'x'), 'sans prefix'
+print n, 'in octal is', oct(n), 'and', format(n, 'o'), 'sans prefix'
 
 
 #dir
 print dir()
 print dir({})
 print dir(list)
-import re
-print dir(re)
+print dir(calendar)
 
 
 #range and xrange
@@ -48,7 +48,8 @@ print "You entered:", user_input
 
 
 #zip- from PSF- returns list of tuples where the i-th tuple contains
-#the i-th element from each of the argument sequences or iterables
+#the i-th element from each of the argument sequences or iterables.
+#The returned list is truncated in length to the length of the shortest argument sequence.
 #in python 3, zip returns an iterator instead of a list
 list_a = ['a', 'b', 'c']
 list_b = [0, 1, 2]
@@ -63,6 +64,20 @@ print "matrix:", mtrx, "transposed:", zip(*mtrx)
 #iterate over multiple lists
 for item_a, item_b in zip(list_a, list_b):
     print item_a, item_b
+
+#truncated to shortest
+#see itertools.izip_longest for fillvalue with uneven iterables
+list_a = ['a', 'b', 'c']
+list_b = [0, 1, 2, 3, 4, 5, 6]
+print list_a, "and", list_b, "zipped:", zip(list_a, list_b)
+
+#from PSF- The left-to-right evaluation order of the iterables is guaranteed.
+#This makes possible an idiom for clustering a data series into n-length groups
+#using zip(*[iter(s)]*n).
+# the key here is that it is the **same** iterator repeated.  neat!
+n = 3
+iters = [iter(string.ascii_lowercase)]*n
+print zip(*iters)
 
 
 #all- return true if all items of iterable are true
@@ -130,7 +145,7 @@ print sum(itertools.chain(list_a, list_b), 10)
 lst = ['100', '2', '33']
 print min(lst)
 #min and max have opt key arg- one arg ordering function
-print min(lst, key=lambda x:int(x))
+print min(lst, key=lambda x: int(x))
 
 print max(2001, 42, 2112)
 

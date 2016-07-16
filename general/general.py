@@ -17,6 +17,12 @@ print "a_dict cleared:", a_dict
 print a_dict.get('c')
 print a_dict.get('c', 'default value')
 
+#rename a key in dictionary
+a_dict = {'a': 0}
+print "orig dict:", a_dict
+#pop raises KeyError if key not in dict and default not provided
+a_dict['new_a'] = a_dict.pop('a')
+print "'a' renamed to 'new_a':", a_dict
 
 #iteritems
 a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
