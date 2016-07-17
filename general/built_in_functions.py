@@ -88,6 +88,7 @@ print any(x[-1] == 'r' for x in months)
 
 #sorted- return sorted list from iterable
 #key is a one arg function that specifies element's comparison key
+#see operator.itemgetter
 lod = [{'a': 1}, {'a': 0}, {'a': -1}]
 print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
 print "reverse sorted:", sorted(lod, key=lambda x: x['a'], reverse=True)
@@ -171,4 +172,5 @@ print filter(None, [True, 0, 1, [0], {}, (9,)])
 
 
 #reduce- reduce items of iterable to single val with function with 2 args
+#see operator.mul
 print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
