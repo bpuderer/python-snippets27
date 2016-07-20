@@ -16,12 +16,27 @@ print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(operator.mul, range(1, 6))
 class MyClass:
     def __init__(self, val):
         self.val = val
+
+    def inc_val(self):
+        self.val += 1
+
+    def add_to_val(self, n):
+        self.val += n
+
 lst = [MyClass(2001), MyClass(0), MyClass(42), MyClass(9)]
 
 #lst.sort(key=lambda x: x.val)
 lst.sort(key=operator.attrgetter('val'))
 print [i.val for i in lst]
 
+
+#methodcaller
+#map(MyClass.inc_val, lst)
+map(operator.methodcaller('inc_val'), lst)
+print [i.val for i in lst]
+
+map(operator.methodcaller('add_to_val', 3), lst)
+print [i.val for i in lst]
 
 
 #itemgetter

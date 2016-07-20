@@ -14,8 +14,15 @@ print "a_dict cleared:", a_dict
 
 #retrieve value when key may or may not exist
 #None is returned when key does not exist or optional default val
+a_dict = {'a': 1, 'b': 2}
 print a_dict.get('c')
 print a_dict.get('c', 'default value')
+
+#retrieve val and do something with it when key may or may not exist
+#good since the 'do something' might not be valid on the default value
+#print a_dict.get('c', None)*2  --> TypeError
+print (a_dict['c']*2 if 'c' in a_dict else None)
+print (a_dict['a']*2 if 'a' in a_dict else None)
 
 #rename a key in dictionary
 a_dict = {'a': 0}
@@ -75,6 +82,16 @@ a, b = 1, 2
 print a, b
 a, b = b, a
 print "swapped:", a, b
+
+#in python3- a, *b = c
+#https://www.python.org/dev/peps/pep-3132/
+c = [1, 2, 3]
+a, b = c[0], c[1:]
+print a, b
+
+c = (1, 2, 3)
+a, b = c[0], c[1:]
+print a, b
 
 
 #chained expression
