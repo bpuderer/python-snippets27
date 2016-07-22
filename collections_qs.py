@@ -1,3 +1,4 @@
+import itertools
 from collections import defaultdict, OrderedDict, Counter, namedtuple, deque
 
 
@@ -51,9 +52,26 @@ print '---'
 
 c = Counter('these are attack eyebrows.')
 print c
+print "t occurs", c['t'], "times"
+#0 returned for missing items instead of KeyError as with dict
+print "z occurs", c['z'], "times"
 print "Top two most common:", c.most_common(2)
-c = Counter(['heads', 'tails', 'tails', 'tails', 'heads', 'tails'])
-print c
+print "appear more than once:", [k for k, v in c.iteritems() if v > 1]
+#elements returns iterator
+print "elements:", list(c.elements())
+del(c['t'])
+print "after 't' removed:", c
+print '-'
+
+# nested
+lst = [[1, 2, 1], [2, 3, 1, 1], [], [4, 5]]
+print Counter(itertools.chain(*lst))
+#print Counter(val for sub in lst for val in sub)
+print '-'
+
+# other ways to init
+print Counter({'a': 4, 'b': 3})
+print Counter(a=4, b=3)
 
 print '---'
 

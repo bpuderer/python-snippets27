@@ -117,3 +117,12 @@ a_dict.setdefault('lst', []).append('something')
 print a_dict.setdefault('lst', [])
 print a_dict.setdefault('lst2')
 print a_dict
+
+
+#count.  also see collections.Counter
+lst = [1, 2, 3, 3, 1, 1]
+tup = (1, 2, 3, 3, 1, 1)
+print "3 occurs", lst.count(3), "times in", lst
+print "1 occurs", tup.count(1), "times in", tup
+lst = [[1, 2], [1, 2, 3, 1, 1], [4, 5]]
+print "1 occurs", sum(x.count(1) for x in lst), "times in", lst
