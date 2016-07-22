@@ -32,6 +32,20 @@ print list(itertools.ifilterfalse(lambda x: x[-1] == 'r', months))
 print list(itertools.ifilterfalse(None, [True, 0, 1, [0], {}, (9,), '']))
 
 
+#takewhile- returns an iterator that returns elements from iterable
+#as long as predicate is true (then stops)
+lst = [1, 2, 3, 4, 5, 6, 0, 0, 0]
+for val in itertools.takewhile(lambda x: x < 4, lst):
+    print val
+
+print '--'
+
+#dropwhile- returns an iterator that returns all remaining elements from iterable
+#once predicate is false
+for val in itertools.dropwhile(lambda x: x < 4, lst):
+    print val
+
+
 #imap
 print list(itertools.imap(lambda x: x*2, num_list))
 

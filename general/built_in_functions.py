@@ -1,5 +1,6 @@
 import calendar
 import itertools
+import random
 import string
 
 
@@ -123,18 +124,29 @@ print "isinstance(b, Test1):", isinstance(b, Test1)
 print "isinstance(a, Test2):", isinstance(a, Test2)
 print "isinstance(b, Test2):", isinstance(b, Test2)
 
+#type to string
+print type(a).__name__
+
 
 #check all elements are of certain type(s)
 lst = [1, 2, 3.14, 'hey']
 print all(isinstance(x, (int, float, long)) for x in lst)
 
 
-#optional default returned instead of raising StopIteration
+#next- optional default returned instead of raising StopIteration
 #when iterator exhausted
 i = iter([42, 2112])
 print next(i, 'default')
 print next(i, 'default')
 print next(i, 'default')
+
+
+#iter- with two args returns callable-iterator.  first arg is callable, second is a sentinel value.
+#when next() called on iterator, callable is called. If val returned by callable does not equal
+#sentinel it is returned.  if it does equal sentinel StopIteration is raised.
+#https://www.python.org/dev/peps/pep-0234/
+for i in iter(lambda: random.randint(1, 7), 3):
+    print i, "is not equal to sentinel val of 3"
 
 
 #sum, min, max
