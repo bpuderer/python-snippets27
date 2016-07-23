@@ -1,4 +1,9 @@
-"""classes demo"""
+"""class demo
+
+highly recommend watching https://www.youtube.com/watch?v=HTLu2DFOdTg
+great presentation from python core dev Raymond Hettinger
+most docstrings below quote and paraphrase RH
+"""
 
 class MyClass(object):
     """MyClass docstring.  inherit from object = new style object"""
@@ -6,20 +11,14 @@ class MyClass(object):
     #class variable. use immutables.
     version = '0.1'
 
-    #watch https://www.youtube.com/watch?v=HTLu2DFOdTg
-    #great presentation from Raymond Hettinger
-    #docstrings below quote and paraphrase RH
-    #if good, useful, correct -> RH
-    #if not -> misquote, me
-
     def __init__(self, val):
         """dunder (double underscore) init is *not* a constructor.
 
         self is the instance that has already been made when init is called.
-        it is an initializer that populates self"""
+        it is an initializer that populates self
+        https://www.youtube.com/watch?v=HTLu2DFOdTg&t=7m40s"""
         self.lst = []
         self.val = val
-        print self.__no_clash()    #demo prevention of name clash
 
     def add(self, x):
         """add x to lst"""
@@ -30,19 +29,24 @@ class MyClass(object):
         self.add(x)
         self.add(x)
 
+    def foo(self):
+        """foo returns double bar"""
+        return self.__bar() * 2
+
+    def bar(self):
+        """bar returns 100% of val
+        
+        name mangling used to prevent name clashes with subclassing
+        https://www.youtube.com/watch?v=HTLu2DFOdTg&t=33m25s"""
+        return self.val * 1.0
+
     @staticmethod
     def func_in_class():
         """purpose of static method is to attach functions to classes
 
-        because that's where people look for it"""
+        why? because that's where people look for it
+        https://www.youtube.com/watch?v=HTLu2DFOdTg&t=30m8s"""
         return "just a function hanging out in a class"
-
-    def no_clash(self):
-        """demo name mangling
-
-        name mangling used to prevent name clashes with subclassing.
-        """
-        return self.val * 1.0
 
     @classmethod
     def fromtripleval(cls, tval):
@@ -60,24 +64,24 @@ class MyClass(object):
         tmp.lst = self.lst + other.lst
         return tmp
 
-    __no_clash = no_clash
+    __bar = bar
 
 
 class MyClass2(MyClass):
-    """MyClass2 docstring"""
+    """MyClass2 inherits from MyClass"""
 
     def double_add(self, x):
-        """override method. add two times x to lst, not x twice"""
+        """add two times x to lst, not x twice"""
         self.add(x*2)
 
-    def no_clash(self):
-        """override no_clash. demo name mangling.  return 110% of val"""
-        return self.val * 1.1
-
+    def bar(self):
+        """demo name mangling. return 110% of val"""
+        return MyClass.bar(self) * 1.1
+        
 
 a = MyClass(42)
-print a.no_clash()
 print a.func_in_class()
+print a.foo(), a.bar()
 a.add(2112)
 a.double_add(2010)
 print a
@@ -86,18 +90,14 @@ print '--'
 
 #b uses alt constructor
 b = MyClass.fromtripleval(27)
-print b.no_clash()
-print b.func_in_class()
-b.add(2112)
-b.double_add(2010)
 print b
 
 print '--'
 
-#c is a MyClass2 not MyClass
+#c is a MyClass2
 c = MyClass2(10)
-print c.no_clash()
-print c.func_in_class()
+#foo uses MyClass bar, not MyClass2
+print c.foo(), c.bar()
 c.add(2001)
 c.double_add(2010)
 print c
@@ -105,4 +105,4 @@ print c
 print '--'
 
 print a + b
-print b + c
+print a + c
