@@ -46,6 +46,11 @@ print "and {} for {} completely {}".format("now", "something", "different")
 print "and {when} for {1} completely {0}".format("different", "something", when="now")
 print "{:0>+8.2f}".format(3.14159)
 
+#zfill- pad to left with 0's to width
+print "'42' with width=5:     ", '42'.zfill(5)
+print "'-42' with width=5:    ", '-42'.zfill(5)
+print "'Cleese' with width=10:", 'Cleese'.zfill(10)
+
 
 #str.startswith(prefix[, start[, end]])
 #prefix can be a str, unicode or *tuple*
