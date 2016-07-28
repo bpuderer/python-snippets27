@@ -31,7 +31,8 @@ print "orig dict:", a_dict
 a_dict['new_a'] = a_dict.pop('a')
 print "'a' renamed to 'new_a':", a_dict
 
-#iteritems
+#iteritems- return iterator over (key, val) pairs
+#dict.iterkeys(), dict.iteritems(), dict.itervalues() removed from python3
 a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
 for key, val in a_dict.iteritems():
     print key, val

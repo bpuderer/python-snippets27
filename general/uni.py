@@ -48,3 +48,17 @@ print '---'
 #₩ℌ∀☂, ♏∃ ℱα☤Ḻ⁇
 uni_test = u'\u20a9\u210c\u2200\u2602, \u264f\u2203 \u2131\u03b1\u2624\u1e3a\u2047'
 print uni_test
+
+print '---'
+
+#chr(i)- return one char string whose ASCII code is i
+print chr(80)
+
+#unichr(i)- return one char unicode whose Unicode code is i
+c = unichr(0x2119)
+print c, repr(c)
+
+#ord(c) - inverse of chr() and unichr()
+#len(c)=1, return int of Unicode code point if unicode or val of byte if 8-bit string
+print ord('P')
+print hex(ord(u'ℙ'))

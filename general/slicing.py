@@ -1,3 +1,6 @@
+import string
+
+
 a_str = "Monty Python's Flying Circus"
 print "example string:", a_str
 
@@ -58,3 +61,7 @@ a_list = ['and', 'now', 'for', 'something', 'this', 'is', 'an', 'ex-parrot', 'co
 #del a_list[4:8]
 a_list[4:8] = []
 print a_list
+
+#iterate over slice
+for c in string.ascii_uppercase[11:16]:
+    print c,
