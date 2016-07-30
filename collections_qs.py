@@ -76,11 +76,14 @@ print Counter(a=4, b=3)
 print '---'
 
 
-# namedtuple
+# namedtuple- tuple subclass, uses no more memory than regular tuple
 # "you should use named tuples instead of tuples anywhere you think object notation
 #  will make your code more pythonic and more easily readable"
-# http://stackoverflow.com/questions/2970608/
+# http://stackoverflow.com/a/2970722
 
+# fieldnames specified as a sequence of strings
+# can also specify fieldnames as single string with fieldnames separated by
+# whitespace and/or commas
 Point = namedtuple('Point', ['x', 'y'])
 p1 = Point(1.0, 2.0)
 p2 = Point(x=-1.0, y=-2.0)
@@ -88,6 +91,15 @@ print p1
 print p2
 print p1.x, p1[1]
 print p2.x, p2.y
+
+print '-'
+
+def get_name():
+    n = namedtuple("name", ["first", "middle", "last"])
+    return n("John", "Marwood", "Cleese")
+
+n = get_name()
+print n.first, n.middle, n.last
 
 print '---'
 
