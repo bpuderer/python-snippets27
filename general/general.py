@@ -35,7 +35,16 @@ print "'a' renamed to 'new_a':", a_dict
 #dict.iterkeys(), dict.iteritems(), dict.itervalues() removed from python3
 a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
 for key, val in a_dict.iteritems():
-    print key, val
+    print key, '->', val
+
+#mutate dict while looping over it
+#https://www.youtube.com/watch?v=OSGv2VnC0go#t=19m18s
+#don't use    for k in d:
+d = {'foo': 0, 'bar': 1, 'baz': 2}
+for k in d.keys():
+    if k.startswith('ba'):
+        del d[k]
+print d
 
 
 #format
@@ -76,18 +85,13 @@ print tmp is None
 print tmp is not None
 
 
-#unpacking an iterable
+#unpacking sequences
 lst = [0, 'abc', [1, 2]]
 a, b, c = lst
 print a, b, c
 
 a, b, (c, d) = lst
 print a, b, c, d
-
-a, b = 1, 2
-print a, b
-a, b = b, a
-print "swapped:", a, b
 
 #in python3- a, *b = c
 #https://www.python.org/dev/peps/pep-3132/
@@ -98,6 +102,17 @@ print a, b
 c = (1, 2, 3)
 a, b = c[0], c[1:]
 print a, b
+
+#simultaneous updates
+a, b = 1, 2
+print a, b
+a, b = b, a
+print "swapped:", a, b
+
+a, b = 1, 2
+print a, b
+a, b = b, a+b
+print "a gets b and b gets a+b:", a, b
 
 
 #chained expression
@@ -130,5 +145,6 @@ lst = [1, 2, 3, 3, 1, 1]
 tup = (1, 2, 3, 3, 1, 1)
 print "3 occurs", lst.count(3), "times in", lst
 print "1 occurs", tup.count(1), "times in", tup
+
 lst = [[1, 2], [1, 2, 3, 1, 1], [4, 5]]
 print "1 occurs", sum(x.count(1) for x in lst), "times in", lst

@@ -16,22 +16,7 @@ for idx, direction in enumerate(cardinal_directions):
     print idx, direction
 
 
-#bin, hex, oct, format
-n = 42
-print n, 'in binary is', bin(n), 'and', format(n, 'b'), 'sans prefix'
-print n, 'in hex is', hex(n), 'and', format(n, 'x'), 'sans prefix'
-print n, 'in octal is', oct(n), 'and', format(n, 'o'), 'sans prefix'
-
-
-#dir
-print dir()
-print dir({})
-print dir(list)
-print dir(calendar)
-
-
 #range and xrange
-#http://stackoverflow.com/a/135114
 #xrange renamed to range in python 3
 #to gen a list with range in python 3: list(range(n))
 print range(10, 0, -2)
@@ -41,21 +26,16 @@ for i in xrange(10, 0, -2):
     print i
 
 
-#prompt for input
-user_input = ''
-while not user_input:
-    user_input = raw_input("Enter something so we can move on: ")
-print "You entered:", user_input
-
-
 #zip- from PSF- returns list of tuples where the i-th tuple contains
 #the i-th element from each of the argument sequences or iterables.
 #The returned list is truncated in length to the length of the shortest argument sequence.
 #in python 3, zip returns an iterator instead of a list
+#https://en.wikipedia.org/wiki/Convolution_(computer_science)
 list_a = ['a', 'b', 'c']
 list_b = [0, 1, 2]
 zipped = zip(list_a, list_b)
 print list_a, "and", list_b, "zipped:", zipped
+#see itertools.izip
 print "to dictionary:", dict(zip(list_a, list_b))
 print "unzipped:", zip(*zipped)
 
@@ -79,58 +59,6 @@ print list_a, "and", list_b, "zipped:", zip(list_a, list_b)
 n = 3
 iters = [iter(string.ascii_lowercase)]*n
 print zip(*iters)
-
-
-#all- return true if all items of iterable are true
-print all(x[-1] == 'r' for x in months)
-#any- return true if any item of iterable is true
-print any(x[-1] == 'r' for x in months)
-
-
-#sorted- return sorted list from iterable
-#key is a one arg function that specifies element's comparison key
-#see operator.itemgetter
-lod = [{'a': 1}, {'a': 0}, {'a': -1}]
-print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
-print "reverse sorted:", sorted(lod, key=lambda x: x['a'], reverse=True)
-
-lst = ['a', 'ab', 'c', 'abcd', 'abc', 'a']
-print "list:", lst, "sorted by element length:", sorted(lst, key=len)
-
-#with keys sorted
-a_dict = {'d': 3, 'a': 0, 'c': 2, 'b': 1}
-for key, val in sorted(a_dict.iteritems()):
-    print key, val
-
-
-#isinstance
-class Test1(object):
-    pass
-
-class Test2(Test1):
-    pass
-
-a = Test1()
-b = Test2()
-
-print "Test2 is derived from Test1.  a is instance of Test1, b is instance of Test2"
-
-print "type(a) is Test1:", type(a) is Test1
-print "type(b) is Test1:", type(b) is Test1
-print "type(a) is Test2:", type(a) is Test2
-print "type(b) is Test2:", type(b) is Test2
-print "isinstance(a, Test1):", isinstance(a, Test1)
-print "isinstance(b, Test1):", isinstance(b, Test1)
-print "isinstance(a, Test2):", isinstance(a, Test2)
-print "isinstance(b, Test2):", isinstance(b, Test2)
-
-#type to string
-print type(a).__name__
-
-
-#check all elements are of certain type(s)
-lst = [1, 2, 3.14, 'hey']
-print all(isinstance(x, (int, float, long)) for x in lst)
 
 
 #next- optional default returned instead of raising StopIteration
@@ -163,6 +91,37 @@ print min(lst, key=lambda x: int(x))
 print max(2001, 42, 2112)
 
 
+#all- return true if all items of iterable are true
+print all(x[-1] == 'r' for x in months)
+#any- return true if any item of iterable is true
+print any(x[-1] == 'r' for x in months)
+
+
+#sorted(iterable[, cmp[, key[, reverse]]]) return sorted list from iterable
+#key is a one arg function that specifies element's comparison key
+#cmp specifies a two arg custom comparison function that returns +n, 0, -n
+#cmp removed in python 3
+#https://www.youtube.com/watch?v=OSGv2VnC0go&t=10m05s
+#see operator.itemgetter
+lod = [{'a': 1}, {'a': 0}, {'a': -1}]
+print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
+print "reverse sorted:", sorted(lod, key=lambda x: x['a'], reverse=True)
+
+lst = ['a', 'ab', 'c', 'abcd', 'abc', 'a']
+print "list:", lst, "sorted by element length:", sorted(lst, key=len)
+
+#with keys sorted
+a_dict = {'d': 3, 'a': 0, 'c': 2, 'b': 1}
+for key, val in sorted(a_dict.iteritems()):
+    print key, val
+
+
+#loop backwards
+lst = ['first', 'second', 'third']
+for item in reversed(lst):
+    print item
+
+
 #map- apply function to every item of iterable and return list
 def double(x):
     return x*2
@@ -186,3 +145,52 @@ print filter(None, [True, 0, 1, [0], {}, (9,)])
 #reduce- reduce items of iterable to single val with function with 2 args
 #see operator.mul
 print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
+
+
+#prompt for input
+user_input = ''
+while not user_input:
+    user_input = raw_input("Enter something so we can move on: ")
+print "You entered:", user_input
+
+
+#bin, hex, oct, format
+n = 42
+print n, 'in binary is', bin(n), 'and', format(n, 'b'), 'sans prefix'
+print n, 'in hex is', hex(n), 'and', format(n, 'x'), 'sans prefix'
+print n, 'in octal is', oct(n), 'and', format(n, 'o'), 'sans prefix'
+
+
+#isinstance
+class Test1(object):
+    pass
+
+class Test2(Test1):
+    pass
+
+a = Test1()
+b = Test2()
+
+print "Test2 is derived from Test1.  a is instance of Test1, b is instance of Test2"
+
+print "type(a) is Test1:", type(a) is Test1
+print "type(b) is Test1:", type(b) is Test1
+print "type(a) is Test2:", type(a) is Test2
+print "type(b) is Test2:", type(b) is Test2
+print "isinstance(a, Test1):", isinstance(a, Test1)
+print "isinstance(b, Test1):", isinstance(b, Test1)
+print "isinstance(a, Test2):", isinstance(a, Test2)
+print "isinstance(b, Test2):", isinstance(b, Test2)
+
+#type to string
+print type(a).__name__
+
+#check all elements are of certain type(s)
+lst = [1, 2, 3.14, 'hey']
+print all(isinstance(x, (int, float, long)) for x in lst)
+
+#dir
+print dir()
+print dir({})
+print dir(list)
+print dir(calendar)

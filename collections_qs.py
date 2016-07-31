@@ -15,6 +15,17 @@ print dict(dd1)
 
 print '---'
 
+# grouping idiom
+names = ['van Rossum', 'torvalds', 'stallman', 'thompson', 'ritchie', 'wall', 'gosling']
+
+d = defaultdict(list)
+for name in names:
+    key = len(name)
+    d[key].append(name)
+print d
+
+print '---'
+
 # defaultdict inside defaultdict...
 # trees, json
 # https://gist.github.com/hrldcpr/2012250
@@ -94,12 +105,15 @@ print p2.x, p2.y
 
 print '-'
 
+# Raymond Hettinger, author of namedtuple on 'clarifying
+# multiple return values with named tuples':
+# https://www.youtube.com/watch?v=OSGv2VnC0go&t=32m19s
 def get_name():
-    n = namedtuple("name", ["first", "middle", "last"])
-    return n("John", "Marwood", "Cleese")
+    name = namedtuple("name", ["first", "middle", "last"])
+    return name("John", "Marwood", "Cleese")
 
-n = get_name()
-print n.first, n.middle, n.last
+name = get_name()
+print name.first, name.middle, name.last
 
 print '---'
 

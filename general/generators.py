@@ -3,6 +3,8 @@ import itertools
 
 #generators - one result at a time using next
 #until exhausted then StopIteration
+#NOTE: reverse function just to demo generators
+#use built-in reversed() to return a reverse iterator
 def reverse(data):
     for idx in range(len(data)-1, -1, -1):
         yield data[idx]
