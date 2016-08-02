@@ -37,6 +37,7 @@ a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
 for key, val in a_dict.iteritems():
     print key, '->', val
 
+
 #mutate dict while looping over it
 #https://www.youtube.com/watch?v=OSGv2VnC0go#t=19m18s
 #don't use    for k in d:
@@ -45,6 +46,10 @@ for k in d.keys():
     if k.startswith('ba'):
         del d[k]
 print d
+
+#docs show example of mutating a list using slicing:
+#https://docs.python.org/2.7/tutorial/controlflow.html#for-statements
+#from Alex Martelli: http://stackoverflow.com/a/1208792
 
 
 #format
@@ -148,3 +153,22 @@ print "1 occurs", tup.count(1), "times in", tup
 
 lst = [[1, 2], [1, 2, 3, 1, 1], [4, 5]]
 print "1 occurs", sum(x.count(1) for x in lst), "times in", lst
+
+
+#pass = NOP
+pass
+
+
+#https://www.youtube.com/watch?v=OSGv2VnC0go#t=15m52s
+#else clause runs if not interrupted by break or return
+def find(seq, target):
+    for i, value in enumerate(seq):
+        if value == target:
+            break
+    else:
+        return -1
+    return i
+
+lst = [9, 7, 3, 42, 2112, 2001]
+print find(lst, 13)
+print find(lst, 42)

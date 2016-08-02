@@ -39,25 +39,6 @@ print dd2
 print '---'
 
 
-# OrderedDict - dictionary that preserves the order keys were added
-
-od1 = OrderedDict()
-od1['a'] = 0
-od1['b'] = 1
-od1['c'] = 2
-od1['d'] = 3
-print od1
-
-a_dict = {}
-a_dict['a'] = 0
-a_dict['b'] = 1
-a_dict['c'] = 2
-a_dict['d'] = 3
-print a_dict
-
-print '---'
-
-
 # Counter - unordered collection where elements are dict keys
 # and their counts are stored as dict values
 
@@ -72,6 +53,10 @@ print "appear more than once:", [k for k, v in c.iteritems() if v > 1]
 print "elements:", list(c.elements())
 del(c['t'])
 print "after 't' removed:", c
+print '-'
+
+# with generator
+print Counter(len(name) for name in names)
 print '-'
 
 # nested
@@ -143,3 +128,22 @@ d.append('d')
 print d
 d.appendleft('a')
 print d
+
+print '---'
+
+
+# OrderedDict - dictionary that preserves the order keys were added
+
+od1 = OrderedDict()
+od1['a'] = 0
+od1['b'] = 1
+od1['c'] = 2
+od1['d'] = 3
+print od1
+
+a_dict = {}
+a_dict['a'] = 0
+a_dict['b'] = 1
+a_dict['c'] = 2
+a_dict['d'] = 3
+print a_dict

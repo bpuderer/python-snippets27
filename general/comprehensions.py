@@ -1,6 +1,20 @@
 import calendar
 
 
+# list comprehension
+# From PSF docs: A list comprehension consists of brackets containing
+# an expression followed by a for clause, then zero or more for or if clauses.
+print [i**2 for i in xrange(20) if i % 3 == 0]
+print [(x,y) for x in xrange(3) for y in xrange(2)]
+
+# nested list comprehension
+print [[(x,y) for x in xrange(3)] for y in xrange(2)]
+
+# list comprehension with conditional expression
+words = ['foo', 'bar', 'baz']
+print [word.upper() if word.startswith('b') else word for word in words]
+
+
 # dictionary comprehensions
 
 # flip keys and values
@@ -20,11 +34,3 @@ print {mth: mth[-1] == 'r' for mth in calendar.month_name[1:]}
 # build set of unique words
 words = ['the', 'The', 'THE', 'then', 'Then', 'THEN']
 print {word.lower() for word in words}
-
-
-# list comprehension
-print [i**2 for i in xrange(20) if i % 3 == 0]
-print [(x,y) for x in xrange(3) for y in xrange(2)]
-
-# nested list comprehension
-print [[(x,y) for x in xrange(3)] for y in xrange(2)]
