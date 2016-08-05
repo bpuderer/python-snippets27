@@ -14,6 +14,13 @@ print [[(x,y) for x in xrange(3)] for y in xrange(2)]
 words = ['foo', 'bar', 'baz']
 print [word.upper() if word.startswith('b') else word for word in words]
 
+# flatten nested list/tuple
+# see itertools.chain.from_iterable
+lst = [[0, 1], [2, 3], [4], [5, 6]]
+tup_of_tups = ((0, 1), (2, 3), (4,), (5, 6))
+print [item for sublist in lst for item in sublist]
+print [item for subtup in tup_of_tups for item in subtup]
+
 
 # dictionary comprehensions
 

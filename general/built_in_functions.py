@@ -5,7 +5,7 @@ import string
 from operator import itemgetter
 
 
-months = list(calendar.month_name)[1:]
+months = calendar.month_name[1:]
 
 
 #enumerate

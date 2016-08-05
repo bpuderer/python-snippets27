@@ -5,7 +5,7 @@ import itertools
 astr = 'abc'
 num_list = [42, 2001, 2112]
 adict = {'key1': 0, 'key2': 1}
-months = list(calendar.month_name)[1:]
+months = calendar.month_name[1:]
 
 month_ends_in_r = [m[-1] == 'r' for m in months]
 month_ends_in_y = [1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0]
@@ -13,6 +13,13 @@ month_ends_in_y = [1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0]
 
 #chain - iterator from multiple iterables
 print list(itertools.chain(astr, num_list, adict))
+
+#flatten
+lst = [[0, 1], [2, 3], [4], [5, 6]]
+tup_of_tups = ((0, 1), (2, 3), (4,), (5, 6))
+print list(itertools.chain(*lst))
+print list(itertools.chain.from_iterable(lst))
+print list(itertools.chain.from_iterable(tup_of_tups))
 
 
 #compress - iterator that returns elements if corresponding
