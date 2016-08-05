@@ -2,6 +2,7 @@ import calendar
 import itertools
 import random
 import string
+from operator import itemgetter
 
 
 months = list(calendar.month_name)[1:]
@@ -39,9 +40,6 @@ print list_a, "and", list_b, "zipped:", zipped
 print "to dictionary:", dict(zip(list_a, list_b))
 print "unzipped:", zip(*zipped)
 
-mtrx = [[1, 2, 3], [4, 5, 6]]
-print "matrix:", mtrx, "transposed:", zip(*mtrx)
-
 #iterate over multiple lists
 for item_a, item_b in zip(list_a, list_b):
     print item_a, item_b
@@ -59,6 +57,14 @@ print list_a, "and", list_b, "zipped:", zip(list_a, list_b)
 n = 3
 iters = [iter(string.ascii_lowercase)]*n
 print zip(*iters)
+
+mtrx = [[1, 2, 3], [4, 5, 6]]
+print "matrix:", mtrx, "transposed:", zip(*mtrx)
+
+#swap keys and values. see comprehensions for better solution
+#values and keys correspond: https://docs.python.org/2.7/library/stdtypes.html#dict.items
+a_dict = {'a': 0, 'b': 1, 'c': 2}
+print "keys and vals swapped:", dict(zip(a_dict.values(), a_dict.keys()))
 
 
 #next- optional default returned instead of raising StopIteration
@@ -89,6 +95,12 @@ print min(lst)
 print min(lst, key=lambda x: int(x))
 
 print max(2001, 42, 2112)
+
+prices = {'MSFT': 57.18, 'AAPL': 105.63, 'FB': 124.24,
+          'AMZN': 762.96, 'GOOG': 772.58, 'IBM': 160.93}
+print min(prices.iteritems(), key=itemgetter(1))
+print max(prices.iteritems(), key=itemgetter(1))
+print sorted(prices.iteritems(), key=itemgetter(1))
 
 
 #all- return true if all items of iterable are true
@@ -145,52 +157,3 @@ print filter(None, [True, 0, 1, [0], {}, (9,)])
 #reduce- reduce items of iterable to single val with function with 2 args
 #see operator.mul
 print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
-
-
-#prompt for input
-user_input = ''
-while not user_input:
-    user_input = raw_input("Enter something so we can move on: ")
-print "You entered:", user_input
-
-
-#bin, hex, oct, format
-n = 42
-print n, 'in binary is', bin(n), 'and', format(n, 'b'), 'sans prefix'
-print n, 'in hex is', hex(n), 'and', format(n, 'x'), 'sans prefix'
-print n, 'in octal is', oct(n), 'and', format(n, 'o'), 'sans prefix'
-
-
-#isinstance
-class Test1(object):
-    pass
-
-class Test2(Test1):
-    pass
-
-a = Test1()
-b = Test2()
-
-print "Test2 is derived from Test1.  a is instance of Test1, b is instance of Test2"
-
-print "type(a) is Test1:", type(a) is Test1
-print "type(b) is Test1:", type(b) is Test1
-print "type(a) is Test2:", type(a) is Test2
-print "type(b) is Test2:", type(b) is Test2
-print "isinstance(a, Test1):", isinstance(a, Test1)
-print "isinstance(b, Test1):", isinstance(b, Test1)
-print "isinstance(a, Test2):", isinstance(a, Test2)
-print "isinstance(b, Test2):", isinstance(b, Test2)
-
-#type to string
-print type(a).__name__
-
-#check all elements are of certain type(s)
-lst = [1, 2, 3.14, 'hey']
-print all(isinstance(x, (int, float, long)) for x in lst)
-
-#dir
-print dir()
-print dir({})
-print dir(list)
-print dir(calendar)
