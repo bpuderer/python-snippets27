@@ -1,4 +1,19 @@
-# python_module_qs
-Short scripts demoing the basics of some modules from the standard library and from PyPi that I have found useful.
+## Python snippets
 
-Be sure to check out Doug Hellmann's [Python Module of the Week](https://pymotw.com/2/) for an outstanding tour of the standard library.  He's the author of [The Python Standard Library By Example](https://doughellmann.com/blog/the-python-standard-library-by-example/) and I can't recommend his site enough.
+Collection of python code snippets from built-in functions, standard library, and third party modules.
+
+#### Awesome References
+
+[PyMOTW](https://pymotw.com/2/)
+
+[Transforming Code into Beautiful, Idiomatic Python](https://www.youtube.com/watch?v=OSGv2VnC0go)
+
+[Python's Class Development Toolkit](https://www.youtube.com/watch?v=HTLu2DFOdTg)
+
+[Pragmatic Unicode, or, How do I stop the pain?](https://www.youtube.com/watch?v=sgHbC6udIqc)
+
+[Loop like a native: while, for, iterators, generators](https://www.youtube.com/watch?v=EnSu9hHGq5o)
+
+[Getting Started Testing](https://www.youtube.com/watch?v=FxSsnHeWQBY)
+
+Huge thanks to the following for their presentations, posts, pages, books etc: Raymond Hettinger, Ned Batchelder, Alex Martelli, David Beazley, Doug Hellmann, Harry Percival, Martijn Pieters
