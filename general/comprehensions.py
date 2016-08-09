@@ -10,6 +10,9 @@ print [(x,y) for x in xrange(3) for y in xrange(2)]
 # nested list comprehension
 print [[(x,y) for x in xrange(3)] for y in xrange(2)]
 
+# parallel list comprehension
+print [x for x in zip(xrange(9, 14), xrange(42, 50))]
+
 # list comprehension with conditional expression
 words = ['foo', 'bar', 'baz']
 print [word.upper() if word.startswith('b') else word for word in words]

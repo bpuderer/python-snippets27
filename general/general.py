@@ -1,96 +1,4 @@
-#clear a list
-a_list = [1, 2, 3, 4]
-print "a_list:", a_list
-del a_list[:]
-#a_list[:] = [] also ok
-print "a_list cleared:", a_list
-
-
-#clear a dictionary
-a_dict = {'a': 1, 'b': 2}
-print "a_dict:", a_dict
-a_dict.clear()
-print "a_dict cleared:", a_dict
-
-#retrieve value when key may or may not exist
-#None is returned when key does not exist or optional default val
-a_dict = {'a': 1, 'b': 2}
-print a_dict.get('c')
-print a_dict.get('c', 'default value')
-
-#retrieve val and do something with it when key may or may not exist
-#good since the 'do something' might not be valid on the default value
-#print a_dict.get('c', None)*2  --> TypeError
-print (a_dict['c']*2 if 'c' in a_dict else None)
-print (a_dict['a']*2 if 'a' in a_dict else None)
-
-#rename a key in dictionary
-a_dict = {'a': 0}
-print "orig dict:", a_dict
-#pop raises KeyError if key not in dict and default not provided
-a_dict['new_a'] = a_dict.pop('a')
-print "'a' renamed to 'new_a':", a_dict
-
-#iteritems- return iterator over (key, val) pairs
-#dict.iterkeys(), dict.iteritems(), dict.itervalues() removed from python3
-a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
-for key, val in a_dict.iteritems():
-    print key, '->', val
-
-
-#mutate dict while looping over it
-#https://www.youtube.com/watch?v=OSGv2VnC0go#t=19m18s
-#don't use    for k in d:
-d = {'foo': 0, 'bar': 1, 'baz': 2}
-for k in d.keys():
-    if k.startswith('ba'):
-        del d[k]
-print d
-
-#docs show example of mutating a list using slicing:
-#https://docs.python.org/2.7/tutorial/controlflow.html#for-statements
-#from Alex Martelli: http://stackoverflow.com/a/1208792
-
-
-#format
-movie = {'title': 'Life of Brian', 'director': 'Terry Jones', 'year': 1979}
-words = ['now', 'something', 'different']
-print "{title} directed by {director} was released in {year}".format(**movie)
-print "and {} for {} completely {}".format(*words)
-print "and {} for {} completely {}".format("now", "something", "different")
-print "and {when} for {1} completely {0}".format("different", "something", when="now")
-print "{:0>+8.2f}".format(3.14159)
-
-#zfill- pad to left with 0's to width
-print "'42' with width=5:     ", '42'.zfill(5)
-print "'-42' with width=5:    ", '-42'.zfill(5)
-print "'Cleese' with width=10:", 'Cleese'.zfill(10)
-
-
-#str.startswith(prefix[, start[, end]])
-#prefix can be a str, unicode or *tuple*
-#same for endswith
-s = '#abcdef'
-print s.startswith('#')
-#if s.startswith('#') or s.startswith('/'):
-print s.startswith(('#', '/'))
-
-
-#reverse a list in place
-#also see slicing.py
-a_list = [0, 1, 2, 3]
-print a_list, "reversed in place:",
-a_list.reverse()
-print a_list
-
-
-#always use is and is not to check for None, never use equality operators
-tmp = None
-print tmp is None
-print tmp is not None
-
-
-#unpacking sequences
+# unpacking sequences
 lst = [0, 'abc', [1, 2]]
 a, b, c = lst
 print a, b, c
@@ -98,8 +6,8 @@ print a, b, c
 a, b, (c, d) = lst
 print a, b, c, d
 
-#in python3- a, *b = c
-#https://www.python.org/dev/peps/pep-3132/
+# in python3- a, *b = c
+# https://www.python.org/dev/peps/pep-3132/
 c = [1, 2, 3]
 a, b = c[0], c[1:]
 print a, b
@@ -108,7 +16,8 @@ c = (1, 2, 3)
 a, b = c[0], c[1:]
 print a, b
 
-#simultaneous updates
+
+# simultaneous updates
 a, b = 1, 2
 print a, b
 a, b = b, a
@@ -120,24 +29,58 @@ a, b = b, a+b
 print "a gets b and b gets a+b:", a, b
 
 
-#chained expression
-x = 4
-if 1 < x < 5:
-    print x, 'is between 1 and 5'
-
-
-#conditional expression
-#parentheses for readability, not required
-x = (42 if True else 2001)
+# conditional expression a.k.a. ternary operation was introduced in python 2.5
+# https://en.wikipedia.org/wiki/%3F:#Python
+# parentheses for readability
+# ugly alternatives:
+# (False and ['trueval'] or ['falseval'])[0]
+# (True and ('trueval',) or ('falseval',))[0]
+# ('falseval', 'trueval')[True]
+# {True: 'trueval', False: 'falseval'}[False]
+# (lambda: 'falseval', lambda: 'trueval')[True]()
+x = ('trueval' if True else 'falseval')
 print x
-x = 42 if False else 2001
-print x
 
 
-#setdefault(key[, default])
-#can be used to init mutable dict values
-#if key in dict, return its val
-#if key not in dict, add key, set it to default, and return default
+# clear a list
+a_list = [1, 2, 3, 4]
+print "a_list:", a_list
+del a_list[:]
+# a_list[:] = [] also ok
+print "a_list cleared:", a_list
+
+
+# clear a dictionary
+a_dict = {'a': 1, 'b': 2}
+print "a_dict:", a_dict
+a_dict.clear()
+print "a_dict cleared:", a_dict
+
+
+# iteritems- return iterator over (key, val) pairs
+# dict.iterkeys(), dict.iteritems(), dict.itervalues() removed from python3
+a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
+for key, val in a_dict.iteritems():
+    print key, '->', val
+
+
+# retrieve value when key may or may not exist
+# None is returned when key does not exist or optional default val
+a_dict = {'a': 1, 'b': 2}
+print a_dict.get('c')
+print a_dict.get('c', 'default value')
+
+# retrieve val and do something with it when key may or may not exist
+# good since the 'do something' might not be valid on the default value
+# print a_dict.get('c', None)*2  --> TypeError
+print (a_dict['c']*3 if 'c' in a_dict else None)
+print (a_dict['a']*3 if 'a' in a_dict else None)
+
+
+# setdefault(key[, default])
+# can be used to init mutable dict values
+# if key in dict, return its val
+# if key not in dict, add key, set it to default, and return default
 a_dict = {}
 a_dict.setdefault('lst', []).append('something')
 print a_dict.setdefault('lst', [])
@@ -145,30 +88,19 @@ print a_dict.setdefault('lst2')
 print a_dict
 
 
-#count.  also see collections.Counter
-lst = [1, 2, 3, 3, 1, 1]
-tup = (1, 2, 3, 3, 1, 1)
-print "3 occurs", lst.count(3), "times in", lst
-print "1 occurs", tup.count(1), "times in", tup
-
-lst = [[1, 2], [1, 2, 3, 1, 1], [4, 5]]
-print "1 occurs", sum(x.count(1) for x in lst), "times in", lst
+# rename a key in dictionary
+a_dict = {'a': 4}
+print "original dictionary:", a_dict
+# pop raises KeyError if key not in dict and default not provided
+a_dict['new_a'] = a_dict.pop('a')
+print "'a' renamed to 'new_a':", a_dict
 
 
-#pass = NOP
-pass
-
-
-#https://www.youtube.com/watch?v=OSGv2VnC0go#t=15m52s
-#else clause runs if not interrupted by break or return
-def find(seq, target):
-    for i, value in enumerate(seq):
-        if value == target:
-            break
-    else:
-        return -1
-    return i
-
-lst = [9, 7, 3, 42, 2112, 2001]
-print find(lst, 13)
-print find(lst, 42)
+# format
+movie = {'title': 'Life of Brian', 'director': 'Terry Jones', 'year': 1979}
+words = ['now', 'something', 'different']
+print "{title} directed by {director} was released in {year}".format(**movie)
+print "and {} for {} completely {}".format(*words)
+print "and {} for {} completely {}".format("now", "something", "different")
+print "and {when} for {1} completely {0}".format("different", "something", when="now")
+print "{:0>+8.2f}".format(3.14159)
