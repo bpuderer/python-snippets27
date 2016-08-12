@@ -1,3 +1,7 @@
+# http://pythontutor.com/
+
+
+
 # mutable default args
 def append_to(element, alist=[]):
     # default args are only evaluated when defined, not
@@ -32,7 +36,6 @@ def foo():
 foo()
 print bar
 
-
 a_list = [1, 2, 3]
 a_dict = {'key1': 'val1'}
 def foo2():
@@ -42,7 +45,6 @@ def foo2():
 foo2()
 print a_list
 print a_dict
-
 
 baz = 8
 def foo3():
@@ -62,10 +64,36 @@ print b, type(b)
 
 
 
-
 # multiple exceptions for a single except clause
 # requires a parenthesized tuple
 try:
     raise ValueError('ValueError message')
 except (AssertionError, ValueError) as e:
     print e
+
+
+
+# careful with + and lists
+a = [1, 2]
+b = a
+a.append(3)
+a.extend([4, 5])
+# modifies existing list object
+a += [6]
+# creates a new list object!
+a = a + [7]
+print "a:", a, "b:", b
+
+
+
+# init 2-D matrix
+# not good. each 'row list' references the same list object
+board = [[0]*4]*4
+board[0][0] = 42
+print board
+
+# better
+board = [[0]*4 for _ in range(4)]
+#board = [[0 for _ in range(4)] for _ in range(4)]
+board[0][0] = 42
+print board

@@ -96,6 +96,19 @@ a_dict['new_a'] = a_dict.pop('a')
 print "'a' renamed to 'new_a':", a_dict
 
 
+# add to list
+lst = [0, 1]
+# append object to end
+lst.append(2)
+# extend list by appending elements from iterable
+lst.extend([3, 4])
+# insert object before index
+lst.insert(2, "insert this before element at index 2")
+# see careful.py
+lst += [5]
+print lst
+
+
 # format
 movie = {'title': 'Life of Brian', 'director': 'Terry Jones', 'year': 1979}
 words = ['now', 'something', 'different']
