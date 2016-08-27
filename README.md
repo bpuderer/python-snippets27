@@ -16,4 +16,6 @@ Collection of python code snippets from built-in functions, standard library, an
 
 [Getting Started Testing](https://www.youtube.com/watch?v=FxSsnHeWQBY)
 
+[Facts and Myths about Python names and values](https://www.youtube.com/watch?v=_AEJHKGk9ns)
+
 Huge thanks to the following for their presentations, posts, pages, books etc: Raymond Hettinger, Ned Batchelder, Alex Martelli, David Beazley, Doug Hellmann, Harry Percival, Martijn Pieters
