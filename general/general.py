@@ -1,4 +1,4 @@
-# unpacking sequences
+# unpacking sequences (or iterables)
 lst = [0, 'abc', [1, 2]]
 a, b, c = lst
 print a, b, c

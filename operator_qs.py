@@ -54,6 +54,6 @@ print "\nsmallest 'b' value", min(lst, key=operator.itemgetter('b'))
 print "largest 'b' value", max(lst, key=operator.itemgetter('b'))
 
 lst = [(1, 2010), (0, 2010), (1, 42), (2, 1776), (4, 9), (3, 13)]
-#lst.sort(key=lambda x: x[0])
+#lst.sort(key=lambda x: x[1])
 lst.sort(key=operator.itemgetter(1))
 print "\nsorted on second element in tuple:\n", lst

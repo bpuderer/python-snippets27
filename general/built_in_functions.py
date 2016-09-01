@@ -1,8 +1,8 @@
 import calendar
 import itertools
+import operator
 import random
 import string
-from operator import itemgetter
 
 
 months = calendar.month_name[1:]
@@ -61,7 +61,7 @@ print zip(*iters)
 mtrx = [[1, 2, 3], [4, 5, 6]]
 print "matrix:", mtrx, "transposed:", zip(*mtrx)
 
-#swap keys and values. see comprehensions for better solution
+#swap keys and values. see comprehensions.py for better solution
 #values and keys correspond: https://docs.python.org/2.7/library/stdtypes.html#dict.items
 a_dict = {'a': 0, 'b': 1, 'c': 2}
 print "keys and vals swapped:", dict(zip(a_dict.values(), a_dict.keys()))
@@ -92,15 +92,15 @@ print sum(itertools.chain(list_a, list_b), 10)
 lst = ['100', '2', '33']
 print min(lst)
 #min and max have opt key arg- one arg ordering function
-print min(lst, key=lambda x: int(x))
+print min(lst, key=int)
 
 print max(2001, 42, 2112)
 
 prices = {'MSFT': 57.18, 'AAPL': 105.63, 'FB': 124.24,
           'AMZN': 762.96, 'GOOG': 772.58, 'IBM': 160.93}
-print min(prices.iteritems(), key=itemgetter(1))
-print max(prices.iteritems(), key=itemgetter(1))
-print sorted(prices.iteritems(), key=itemgetter(1))
+print min(prices.iteritems(), key=operator.itemgetter(1))
+print max(prices.iteritems(), key=operator.itemgetter(1))
+print sorted(prices.iteritems(), key=operator.itemgetter(1))
 
 
 #all- return true if all items of iterable are true
@@ -114,10 +114,9 @@ print any(x[-1] == 'r' for x in months)
 #cmp specifies a two arg custom comparison function that returns +n, 0, -n
 #cmp removed in python 3
 #https://www.youtube.com/watch?v=OSGv2VnC0go&t=10m05s
-#see operator.itemgetter
 lod = [{'a': 1}, {'a': 0}, {'a': -1}]
-print "list:", lod, "sorted via 'a' key:", sorted(lod, key=lambda x: x['a'])
-print "reverse sorted:", sorted(lod, key=lambda x: x['a'], reverse=True)
+print "list:", lod, "sorted via 'a' key:", sorted(lod, key=operator.itemgetter('a'))
+print "reverse sorted:", sorted(lod, key=operator.itemgetter('a'), reverse=True)
 
 lst = ['a', 'ab', 'c', 'abcd', 'abc', 'a']
 print "list:", lst, "sorted by element length:", sorted(lst, key=len)
@@ -155,5 +154,4 @@ print filter(None, [True, 0, 1, [0], {}, (9,)])
 
 
 #reduce- reduce items of iterable to single val with function with 2 args
-#see operator.mul
-print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(lambda x, y: x*y, range(1, 6))
+print range(1, 6), "((((1*2)*3)*4)*5) =", reduce(operator.mul, range(1, 6))
