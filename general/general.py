@@ -88,14 +88,6 @@ print a_dict.setdefault('lst2')
 print a_dict
 
 
-# rename a key in dictionary
-a_dict = {'a': 4}
-print "original dictionary:", a_dict
-# pop raises KeyError if key not in dict and default not provided
-a_dict['new_a'] = a_dict.pop('a')
-print "'a' renamed to 'new_a':", a_dict
-
-
 # add to list
 lst = [0, 1]
 # append object to end

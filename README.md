@@ -18,4 +18,6 @@ Collection of python code snippets from built-in functions, standard library, an
 
 [Facts and Myths about Python names and values](https://www.youtube.com/watch?v=_AEJHKGk9ns)
 
+[Code Like a Pythonista: Idiomatic Python](http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html)
+
 Huge thanks to the following for their presentations, posts, pages, books etc: Raymond Hettinger, Ned Batchelder, Alex Martelli, David Beazley, Doug Hellmann, Harry Percival, Martijn Pieters

@@ -43,6 +43,11 @@ print type(a).__name__
 lst = [1, 2, 3.14, 'hey']
 print all(isinstance(x, (int, float, long)) for x in lst)
 
+#cmp
+print "cmp(x, y) returns", cmp(42, 22), "when x > y"
+print "cmp(x, y) returns", cmp(22, 42), "when x < y"
+print "cmp(x, y) returns", cmp(42, 42), "when x == y"
+
 #dir
 print dir()
 print dir({})

@@ -10,8 +10,13 @@ print [(x,y) for x in xrange(3) for y in xrange(2)]
 # nested list comprehension
 print [[(x,y) for x in xrange(3)] for y in xrange(2)]
 
-# parallel list comprehension
-print [x for x in zip(xrange(9, 14), xrange(42, 50))]
+# any/all with list comprehension
+restaurants = ["Pontchartrain Po-Boys", "Don's Seafood", "Acme Oyster House",
+               "DiCristina's Restaurant", "DiMartino's Muffulettas", "Mandeville Seafood",
+               "Bear's Restaurant", "Pat's Seafood & Cajun Deli",
+               "Buster's Place Restaurant and Oyster Bar", "Abita Brew Pub"]
+names = ["seafood", "po-boy"]
+print [rest for rest in restaurants if any(name.lower() in rest.lower() for name in names)]
 
 # list comprehension with conditional expression
 words = ['foo', 'bar', 'baz']

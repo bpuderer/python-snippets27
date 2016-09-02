@@ -74,3 +74,21 @@ pass
 tmp = None
 print tmp is None
 print tmp is not None
+
+
+# rename a key in dictionary
+a_dict = {'a': 4}
+print "original dictionary:", a_dict
+# pop raises KeyError if key not in dict and default not provided
+a_dict['new_a'] = a_dict.pop('a')
+print "'a' renamed to 'new_a':", a_dict
+
+
+# merge two dictionaries
+# better in python3 with PEP 448: https://www.python.org/dev/peps/pep-0448/
+# dictc = {**dicta, **dictb}
+dicta = {'a': 0, 'b': 1}
+dictb = {'b': 2, 'c': 3}
+dictc = dicta.copy()
+dictc.update(dictb)
+print dicta, "and", dictb, "merged:", dictc
