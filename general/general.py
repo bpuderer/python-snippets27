@@ -1,3 +1,6 @@
+from collections import namedtuple
+
+
 # unpacking sequences (or iterables)
 lst = [0, 'abc', [1, 2]]
 a, b, c = lst
@@ -105,7 +108,14 @@ print lst
 movie = {'title': 'Life of Brian', 'director': 'Terry Jones', 'year': 1979}
 words = ['now', 'something', 'different']
 print "{title} directed by {director} was released in {year}".format(**movie)
+print "{0[title]} directed by {0[director]} was released in {0[year]}".format(movie)
 print "and {} for {} completely {}".format(*words)
 print "and {} for {} completely {}".format("now", "something", "different")
 print "and {when} for {1} completely {0}".format("different", "something", when="now")
+print "and {0[0]} for {0[1]} completely {0[2]}".format(words)
+
 print "{:0>+8.2f}".format(3.14159)
+
+Point = namedtuple('Point', ['x', 'y'])
+p = Point(x=-1.0, y=-2.0)
+print "x={0.x} y={0.y}".format(p)
