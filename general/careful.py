@@ -97,3 +97,11 @@ board = [[0]*4 for _ in range(4)]
 #board = [[0 for _ in range(4)] for _ in range(4)]
 board[0][0] = 42
 print board
+
+
+
+# careful with mutables and chained assignment
+x = y = []
+x.append(42)
+print x
+print y, 'uh oh'

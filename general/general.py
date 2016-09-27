@@ -1,7 +1,7 @@
 from collections import namedtuple
 
 
-# unpacking sequences (or iterables)
+# sequence unpacking
 lst = [0, 'abc', [1, 2]]
 a, b, c = lst
 print a, b, c
@@ -119,3 +119,14 @@ print "{:0>+8.2f}".format(3.14159)
 Point = namedtuple('Point', ['x', 'y'])
 p = Point(x=-1.0, y=-2.0)
 print "x={0.x} y={0.y}".format(p)
+
+class SomeClass(object):
+
+    def __str__(self):
+        return 'str'
+
+    def __repr__(self):
+        return 'repr'
+
+c = SomeClass()
+print '{cls!s} {cls!r}'.format(cls=c)

@@ -66,6 +66,11 @@ if 1 < x < 5:
     print x, 'is between 1 and 5'
 
 
+# chained assignment
+spam = ham = eggs = 42
+print spam, ham, eggs
+
+
 # pass = NOP
 pass
 
