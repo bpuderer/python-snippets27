@@ -2,6 +2,8 @@ import calendar
 import itertools
 
 
+# https://docs.python.org/2.7/library/itertools.html#recipes
+
 astr = 'abc'
 num_list = [42, 2001, 2112]
 adict = {'key1': 0, 'key2': 1}

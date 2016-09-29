@@ -1,21 +1,22 @@
 import calendar
+import datetime
 
 
-#prompt for input
+# prompt for input
 user_input = ''
 while not user_input:
     user_input = raw_input("Enter something so we can move on: ")
 print "You entered:", user_input
 
 
-#bin, hex, oct, format
+# bin, hex, oct, format
 n = 42
 print n, 'in binary is', bin(n), 'and', format(n, 'b'), 'sans prefix'
 print n, 'in hex is', hex(n), 'and', format(n, 'x'), 'sans prefix'
 print n, 'in octal is', oct(n), 'and', format(n, 'o'), 'sans prefix'
 
 
-#isinstance
+# isinstance
 class Test1(object):
     pass
 
@@ -36,19 +37,40 @@ print "isinstance(b, Test1):", isinstance(b, Test1)
 print "isinstance(a, Test2):", isinstance(a, Test2)
 print "isinstance(b, Test2):", isinstance(b, Test2)
 
-#type to string
+
+# type to string
 print type(a).__name__
 
-#check all elements are of certain type(s)
+
+# check all elements are of certain type(s)
 lst = [1, 2, 3.14, 'hey']
 print all(isinstance(x, (int, float, long)) for x in lst)
 
-#cmp
+
+# (str), repr, eval
+now = datetime.datetime.now()
+print now
+repr_now = repr(now)
+print repr_now
+print eval(repr_now)
+
+
+# locals, globals
+spam = 42
+def foo():
+    spam = 43
+    print "locals:", locals()
+    print "globals:", globals()
+foo()
+
+
+# cmp
 print "cmp(x, y) returns", cmp(42, 22), "when x > y"
 print "cmp(x, y) returns", cmp(22, 42), "when x < y"
 print "cmp(x, y) returns", cmp(42, 42), "when x == y"
 
-#dir
+
+# dir
 print dir()
 print dir({})
 print dir(list)
