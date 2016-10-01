@@ -1,3 +1,6 @@
+import collections
+
+
 d = {'a': 0, 'b': 1, 'c': 2, 'd': 3}
 del d['b']
 # remove key and return value
@@ -93,3 +96,34 @@ dictb = {'b': 2, 'c': 3}
 dictc = dicta.copy()
 dictc.update(dictb)
 print dicta, "and", dictb, "merged:", dictc
+
+
+print '---'
+
+
+# http://stackoverflow.com/a/2158532
+# http://stackoverflow.com/users/680/cristian
+def walkdict_recur(d, key):
+    for k, v in d.iteritems():
+        if isinstance(v, collections.Mapping):
+            for inner_k, inner_v in walkdict_recur(v, key):
+                yield inner_k, inner_v
+        else:
+            if k == key:
+                yield k, v
+
+# http://stackoverflow.com/a/10757107
+# http://stackoverflow.com/users/166749/fred-foo
+def walkdict_iter(d, key):
+    stack = d.items()
+    while stack:
+        k, v = stack.pop()
+        if isinstance(v, dict):
+            stack.extend(v.iteritems())
+        else:
+            if k == key:
+                yield v
+
+d = {'z': 99, 'a': {'aa': {'aaa': 2}}, 'b': 12, 'aaa': "abc", 'y': {'yy': {'yyy': 4}}}
+print list(walkdict_recur(d, 'aaa'))
+print list(walkdict_iter(d, 'aaa'))

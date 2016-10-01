@@ -1,3 +1,6 @@
+import collections
+
+
 # add to list
 lst = [0, 1]
 # append object to end
@@ -56,6 +59,23 @@ print "3 occurs", lst.count(3), "times in", lst
 
 lst = [[1, 2], [1, 2, 3, 1, 1], [4, 5]]
 print "1 occurs", sum(x.count(1) for x in lst), "times in", lst
+
+
+print '---'
+
+
+# http://stackoverflow.com/a/2158532
+# http://stackoverflow.com/users/680/cristian
+def flatten(l):
+    for el in l:
+        if isinstance(el, collections.Iterable) and not isinstance(el, basestring):
+            for sub in flatten(el):
+                yield sub
+        else:
+            yield el
+
+lst = [[[1, 2, 3], [4, 5, 'abc', (13, (14, 15))]], 6]
+print list(flatten(lst))
 
 
 # docs show example of mutating a list using slicing:
