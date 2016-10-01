@@ -1,6 +1,3 @@
-from collections import namedtuple
-
-
 # sequence unpacking
 lst = [0, 'abc', [1, 2]]
 a, b, c = lst
@@ -9,15 +6,18 @@ print a, b, c
 a, b, (c, d) = lst
 print a, b, c, d
 
+
+print '---'
+
+
 # in python3- a, *b = c
 # https://www.python.org/dev/peps/pep-3132/
-c = [1, 2, 3]
+c = "unpack"
 a, b = c[0], c[1:]
 print a, b
 
-c = (1, 2, 3)
-a, b = c[0], c[1:]
-print a, b
+
+print '---'
 
 
 # simultaneous updates
@@ -26,10 +26,15 @@ print a, b
 a, b = b, a
 print "swapped:", a, b
 
-a, b = 1, 2
+print '-'
+
+a, b = 4, 2
 print a, b
 a, b = b, a+b
 print "a gets b and b gets a+b:", a, b
+
+
+print '---'
 
 
 # conditional expression a.k.a. ternary operation was introduced in python 2.5
@@ -41,92 +46,55 @@ print "a gets b and b gets a+b:", a, b
 # ('falseval', 'trueval')[True]
 # {True: 'trueval', False: 'falseval'}[False]
 # (lambda: 'falseval', lambda: 'trueval')[True]()
-x = ('trueval' if True else 'falseval')
-print x
+print ('trueval' if True else 'falseval')
+print ('trueval' if False else 'falseval')
+
+print '---'
 
 
-# clear a list
-a_list = [1, 2, 3, 4]
-print "a_list:", a_list
-del a_list[:]
-# a_list[:] = [] also ok
-print "a_list cleared:", a_list
+# chained expression
+x = 4
+if 1 < x < 5:
+    print x, 'is between 1 and 5'
 
 
-# clear a dictionary
-a_dict = {'a': 1, 'b': 2}
-print "a_dict:", a_dict
-a_dict.clear()
-print "a_dict cleared:", a_dict
+print '---'
 
 
-# iteritems- return iterator over (key, val) pairs
-# dict.iterkeys(), dict.iteritems(), dict.itervalues() removed from python3
-a_dict = {'north': 0, 'south': 1, 'east': 2, 'west': 3}
-for key, val in a_dict.iteritems():
-    print key, '->', val
+# chained assignment
+spam = ham = eggs = 42
+print spam, ham, eggs
 
 
-# retrieve value when key may or may not exist
-# None is returned when key does not exist or optional default val
-a_dict = {'a': 1, 'b': 2}
-print a_dict.get('c')
-print a_dict.get('c', 'default value')
-
-# retrieve val and do something with it when key may or may not exist
-# good since the 'do something' might not be valid on the default value
-# print a_dict.get('c', None)*2  --> TypeError
-print (a_dict['c']*3 if 'c' in a_dict else None)
-print (a_dict['a']*3 if 'a' in a_dict else None)
+print '---'
 
 
-# setdefault(key[, default])
-# can be used to init mutable dict values
-# if key in dict, return its val
-# if key not in dict, add key, set it to default, and return default
-a_dict = {}
-a_dict.setdefault('lst', []).append('something')
-print a_dict.setdefault('lst', [])
-print a_dict.setdefault('lst2')
-print a_dict
+# pass = NOP/NOOP
+pass
 
 
-# add to list
-lst = [0, 1]
-# append object to end
-lst.append(2)
-# extend list by appending elements from iterable
-lst.extend([3, 4])
-# insert object before index
-lst.insert(2, "insert this before element at index 2")
-# see careful.py
-lst += [5]
-print lst
+print '---'
 
 
-# format
-movie = {'title': 'Life of Brian', 'director': 'Terry Jones', 'year': 1979}
-words = ['now', 'something', 'different']
-print "{title} directed by {director} was released in {year}".format(**movie)
-print "{0[title]} directed by {0[director]} was released in {0[year]}".format(movie)
-print "and {} for {} completely {}".format(*words)
-print "and {} for {} completely {}".format("now", "something", "different")
-print "and {when} for {1} completely {0}".format("different", "something", when="now")
-print "and {0[0]} for {0[1]} completely {0[2]}".format(words)
+# always use is and is not to check for None, never use equality operators
+tmp = None
+print tmp is None
+print tmp is not None
 
-print "{:0>+8.2f}".format(3.14159)
 
-Point = namedtuple('Point', ['x', 'y'])
-p = Point(x=-1.0, y=-2.0)
-print "x={0.x} y={0.y}".format(p)
+print '---'
 
-class SomeClass(object):
 
-    def __str__(self):
-        return 'str'
+# https://www.youtube.com/watch?v=OSGv2VnC0go#t=15m52s
+# else clause runs if not interrupted by break or return
+def find(seq, target):
+    for i, value in enumerate(seq):
+        if value == target:
+            break
+    else:
+        return -1
+    return i
 
-    def __repr__(self):
-        return 'repr'
-
-c = SomeClass()
-print '{cls!s} {cls!r}'.format(cls=c)
+lst = [9, 7, 3, 42, 2112, 2001]
+print find(lst, 13)
+print find(lst, 42)

@@ -51,7 +51,7 @@ print "Top two most common:", c.most_common(2)
 print "appear more than once:", [k for k, v in c.iteritems() if v > 1]
 #elements returns iterator
 print "elements:", list(c.elements())
-del(c['t'])
+del c['t']
 print "after 't' removed:", c
 print '-'
 
