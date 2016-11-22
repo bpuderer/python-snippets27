@@ -98,8 +98,13 @@ print max(2001, 42, 2112)
 
 prices = {'MSFT': 57.18, 'AAPL': 105.63, 'FB': 124.24,
           'AMZN': 762.96, 'GOOG': 772.58, 'IBM': 160.93}
+print min(prices.keys(), key=prices.get)
 print min(prices.iteritems(), key=operator.itemgetter(1))
+
+print max(prices.keys(), key=prices.get)
 print max(prices.iteritems(), key=operator.itemgetter(1))
+
+print sorted(prices.keys(), key=prices.get)
 print sorted(prices.iteritems(), key=operator.itemgetter(1))
 
 
