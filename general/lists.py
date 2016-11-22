@@ -31,12 +31,23 @@ print lst
 print '---'
 
 
-# clear a list
+# clear a list. in python 3, list has a clear method
 lst = [1, 2, 3, 4]
 print lst
 del lst[:]
-# lst[:] = [] also ok
+# lst[:] = [] also works
 print "cleared:", lst
+
+
+print '---'
+
+
+# shallow copy a list. in python 3, list has a copy method
+# see copy module for deep copy
+lsta = ['first', 'second', 'third']
+#lstb = lsta[:] also works
+lstb = list(lsta)
+print lstb
 
 
 print '---'

@@ -101,6 +101,16 @@ print dicta, "and", dictb, "merged:", dictc
 print '---'
 
 
+# shallow copy a dictionary.  see copy module for deep copy
+dicta = {'a': 0, 'b': 1}
+#dictb = dict(dicta) also works
+dictb = dicta.copy()
+print dictb
+
+
+print '---'
+
+
 # http://stackoverflow.com/a/2158532
 # http://stackoverflow.com/users/680/cristian
 def walkdict_recur(d, key):
