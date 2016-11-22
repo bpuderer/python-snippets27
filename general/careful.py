@@ -1,4 +1,5 @@
 # http://pythontutor.com/
+import time
 
 
 
@@ -12,9 +13,8 @@ def append_to(element, alist=[]):
 print append_to(42)
 print "???", append_to(2112)
 
-
+# typical solution
 def append_to2(element, alist=None):
-    # typical solution
     if alist is None:
         alist = []
     alist.append(element)
@@ -22,6 +22,14 @@ def append_to2(element, alist=None):
 
 print append_to2(42)
 print append_to2(2112)
+
+
+# another demo of default args only evaluated when defined
+def print_time(t=time.time()):
+    print t
+print_time()
+time.sleep(1)
+print_time()
 
 
 
