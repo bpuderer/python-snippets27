@@ -25,8 +25,14 @@ print append_to2(2112)
 
 
 # another demo of default args only evaluated when defined
+print "current time:", time.time()
+time.sleep(1)
+print "defining print_time()..."
 def print_time(t=time.time()):
-    print t
+    print "in print_time():", t
+time.sleep(1)
+print "current time:", time.time()
+time.sleep(1)
 print_time()
 time.sleep(1)
 print_time()
