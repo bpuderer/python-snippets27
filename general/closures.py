@@ -28,13 +28,13 @@ print '---'
 # http://stackoverflow.com/users/4279/j-f-sebastian
 def make_counter():
     #i = 0
-    d = {'i': 0}
+    i = [0]
     def counter():
         #i += 1    -> UnboundLocalError
         #see PEP 3104 and nonlocal keyword implemented in python 3
         #using a mutable object as a workaround
-        d['i'] += 1
-        return d['i']
+        i[0] += 1
+        return i[0]
     return counter
 
 c = make_counter()
