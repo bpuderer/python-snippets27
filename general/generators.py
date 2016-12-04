@@ -38,7 +38,7 @@ print list(itertools.islice(divisible_by_nine(itertools.count(42)), 50))
 
 
 
-# https://www.youtube.com/watch?v=EnSu9hHGq5o
+# https://www.youtube.com/watch?v=EnSu9hHGq5o&t=17m15s
 # abstracting the iteration
 # from Ned Batchelder
 def interesting_lines(f):
