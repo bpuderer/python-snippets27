@@ -165,3 +165,15 @@ g = (i+j for i in lst1 for j in lst2)
 lst1 = [1, 2]
 lst2 = [100, 200]
 print g.next()
+
+
+print '---'
+
+
+# evaluation order for assignment statements with subscriptions
+# https://docs.python.org/2/reference/expressions.html#subscriptions
+# https://docs.python.org/2/reference/simple_stmts.html#assignment-statements
+i = iter(['first', 'second'])
+d = {}
+d[i.next()] = i.next()
+print d
