@@ -108,17 +108,19 @@ print sorted(prices.keys(), key=prices.get)
 print sorted(prices.iteritems(), key=operator.itemgetter(1))
 
 
-#all- return true if all items of iterable are true
+#all- return True if all items of iterable are true
 print all(x[-1] == 'r' for x in months)
 #all short circuits (returning False) after it sees a false value
-i = iter([False, 'blah'])
+i = iter([True, False, 'blah'])
 print all(i)
 print i.next()
 
-#any- return true if any item of iterable is true
+#any- return True if any item of iterable is true
 print any(x[-1] == 'r' for x in months)
+#use any to check if all items are false
+print not any([False, False, False])
 #any short circuits (returning True) after it sees a true value
-i = iter([True, 'blah'])
+i = iter([False, True, 'blah'])
 print any(i)
 print i.next()
 
