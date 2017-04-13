@@ -92,3 +92,10 @@ print list(itertools.islice(itertools.cycle('abc'), 7))
 #itertools.repeat(object[, times])
 print list(itertools.repeat(9, 10))
 print list(itertools.islice(itertools.repeat(9), 5))
+
+
+#itertools.tee(iterable[, n=2])
+a, b = itertools.tee(iter([42, 2112]))
+print a.next()
+print a.next()
+print b.next()
