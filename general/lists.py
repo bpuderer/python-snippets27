@@ -31,6 +31,14 @@ print lst
 print '---'
 
 
+# ValueError if item not in list
+lst = [28, 3, 9, 42]
+print "index of 9 in list is", lst.index(9)
+
+
+print '---'
+
+
 # clear a list. in python 3, list has a clear method
 lst = [1, 2, 3, 4]
 print lst
@@ -55,10 +63,15 @@ print '---'
 
 # reverse a list in place
 # also see slicing.py
-lst = [0, 1, 2, 3]
+lst = [44, 17, 23, 3, 19]
 print lst, "reversed in place:",
 lst.reverse()
 print lst
+
+# list.sort(cmp=None, key=None, reverse=False)
+# see ../operator_qs.py
+lst.sort()
+print "sorted in place:", lst
 
 
 print '---'

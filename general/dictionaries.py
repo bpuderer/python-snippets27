@@ -1,8 +1,10 @@
 import collections
 
 
+# KeyError if key not in map
 d = {'a': 0, 'b': 1, 'c': 2, 'd': 3}
 del d['b']
+
 # remove key and return value
 # KeyError raised if key does not exist and default not provided
 print d.pop('c')
@@ -59,6 +61,18 @@ d = {}
 d.setdefault('lst', []).append('something')
 print d.setdefault('lst', [])
 print d.setdefault('lst2')
+print d
+
+
+print '---'
+
+
+# update dictionary with key/value pairs, overwriting
+d = {}
+d.update({'a': 0})
+d.update(b=1, c=2)
+d.update([['d', 3], ['b', 11]])
+d.update((('e', 4),))
 print d
 
 

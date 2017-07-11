@@ -1,4 +1,5 @@
 import itertools
+import math
 
 
 # generators - one result at a time using next
@@ -24,6 +25,19 @@ data = 'abcd'
 g = (data[i] for i in range(len(data)-1, -1, -1))
 for char in g:
     print char
+
+
+# trial division
+def is_prime(n):
+    if n == 2:
+        return True
+    elif n <= 1 or n % 2 == 0:
+        return False
+    else:
+        return all( n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
+print "is 51 prime?", is_prime(51)
+print "is 97 prime?", is_prime(97)
+print "is 15486869 prime?", is_prime(15486869)
 
 
 
