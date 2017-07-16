@@ -22,17 +22,27 @@ os.environ['PYTEST'] = 'set from py script'
 print os.getenv('PYTEST', 'default val')
 
 
-dirs = [d for d in os.listdir(os.curdir) if os.path.isdir(d)]
-print "dirs in current dir:", dirs
+print "---"
+
+
+print "dirs in current dir:"
+for d in os.listdir(os.curdir):
+    if os.path.isdir(d):
+        print d
+
+
+print "---"
 
 
 # recursively walk directory searching for files
 # with Unix filename pattern matching
-matches = []
+print 'csv files from here on down:'
 for dirpath, _, filenames in os.walk(os.curdir):
     for filename in fnmatch.filter(filenames, '*.csv'):
-        matches.append(os.path.join(dirpath, filename))
-print 'csv files from here on down:', matches
+        print os.path.join(dirpath, filename)
+
+
+print "---"
 
 
 print "last modified time:", time.ctime(os.path.getmtime(__file__))
