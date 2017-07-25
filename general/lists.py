@@ -77,6 +77,11 @@ print "sorted in place:", lst
 print '---'
 
 
+# remove duplicates from list, maintain order
+# see ../collections_qs.py
+# https://stackoverflow.com/a/7961425
+
+
 # count.  also see collections.Counter
 lst = [1, 2, 3, 3, 1, 1]
 print "3 occurs", lst.count(3), "times in", lst

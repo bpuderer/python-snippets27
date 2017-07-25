@@ -147,3 +147,10 @@ a_dict['b'] = 1
 a_dict['c'] = 2
 a_dict['d'] = 3
 print a_dict
+
+print '-'
+
+lst = [1, 2, 3, 1, 1, 4, 5, 4, 1]
+print "lst:", lst
+# https://stackoverflow.com/a/7961425
+print "with duplicates removed, order maintained:", list(OrderedDict.fromkeys(lst))
