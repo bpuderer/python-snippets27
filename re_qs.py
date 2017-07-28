@@ -103,5 +103,9 @@ for m in re.finditer(r'cop \w+', text):
 #for matching a string that might have regex metachars
 print re.escape(r'.*good \w+')
 
+# remove non-digit chars from string
+s = "ab123cd4+1 (555) 555-5555"
+print re.sub(r"\D", "", s)
+
 #clear regex cache
 re.purge()

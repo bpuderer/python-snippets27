@@ -48,3 +48,19 @@ s = '#abcdef'
 print s.startswith('#')
 # if s.startswith('#') or s.startswith('/'):
 print s.startswith(('#', '/'))
+
+
+print '---'
+
+
+# string.rstrip(s[, chars])
+# characters in chars string stripped from end
+print '/resource/z/z/z/z'.rstrip('/z')
+print '/resource'.rstrip('/')
+
+
+# strip string from ending of another string
+astring = "ZZZZ blah blah blah ZZZ"
+ending = "ZZZ"
+if astring.endswith(ending):
+    print astring[:-len(ending)]
