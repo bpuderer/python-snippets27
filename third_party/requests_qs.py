@@ -1,3 +1,4 @@
+import json
 from uuid import uuid4
 
 import requests
@@ -17,6 +18,11 @@ requests.delete("http://localhost:1234/books", timeout=0.5)
 book = {'identifier': {'ISBN-10': "0374530874"}, 'title': "The Violent Bear It Away"}
 r = requests.post("http://localhost:1234/books", json=book, timeout=0.5)
 print r.status_code
+
+with open('book.json') as f:
+    book = json.load(f)
+    r = requests.post("http://localhost:1234/books", json=book, timeout=0.5)
+    print r.status_code
 
 
 print '---'
