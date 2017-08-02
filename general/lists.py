@@ -1,7 +1,7 @@
 import collections
 
 
-# add to list
+# adding...
 lst = [0, 1]
 # append object to end
 lst.append(2)
@@ -17,14 +17,16 @@ print lst
 print '---'
 
 
-# remove from list
-lst = [1, 2, 3, 42]
+# removing...
+lst = [1, 2, 3, 42, 28, 3]
 # remove value, ValueError if not present
 lst.remove(3)
 # remove at index and return, IndexError if empty or out of range
 print lst.pop(1)
 # if optional index not provided, last item removed/returned
 lst.pop()
+# remove element at index
+del lst[0]
 print lst
 
 
