@@ -56,3 +56,7 @@ print '---'
 tmp = None
 print tmp is None
 print tmp is not None
+
+
+# use [] and {} instead of list() and dict()
+# https://stackoverflow.com/a/30216156

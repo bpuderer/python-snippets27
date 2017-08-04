@@ -34,7 +34,7 @@ def is_prime(n):
     elif n <= 1 or n % 2 == 0:
         return False
     else:
-        return all( n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
+        return all(n % i for i in range(3, int(math.sqrt(n)) + 1, 2))
 print "is 51 prime?", is_prime(51)
 print "is 97 prime?", is_prime(97)
 print "is 15486869 prime?", is_prime(15486869)

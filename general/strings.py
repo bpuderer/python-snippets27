@@ -32,6 +32,14 @@ print '{cls!s} {cls!r}'.format(cls=c)
 print '---'
 
 
+# concat strings in iterable using separator
+print '-'.join('abcd')
+print ''.join(str(i) for i in xrange(10))
+
+
+print '---'
+
+
 # zfill- pad to left with 0's to width
 print "'42' with width=5:     ", '42'.zfill(5)
 print "'-42' with width=5:    ", '-42'.zfill(5)
