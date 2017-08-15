@@ -1,3 +1,4 @@
+# args is a tuple, kwargs is a dictionary
 def some_function(a, b, c=0, d=1, *args, **kwargs):
     print "a:", a, "b:", b, "c:", c, "d:", d, "args:", args, "kwargs:", kwargs
 

@@ -109,6 +109,25 @@ lst = [[[1, 2, 3], [4, 5, 'abc', (13, (14, 15))]], 6]
 print list(flatten(lst))
 
 
+print '---'
+
+
+# optional trailing comma a good idea
+# diff is cleaner when adding to end
+# can also avoid issue seen below
+lst = ['one',
+       'two',
+       'three'
+       'four'
+]
+print lst
+lst = ['one',
+       'two',
+       'three',
+       'four',
+]
+print lst
+
 # docs show example of mutating a list using slicing:
 # https://docs.python.org/2.7/tutorial/controlflow.html#for-statements
 # from Alex Martelli: http://stackoverflow.com/a/1208792
