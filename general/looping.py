@@ -46,6 +46,7 @@ for l in "Spam, Spam, Spam, egg and Spam":
         continue
     # python3's print function handles this
     # see ../from_future.py
+    # print l,  adds a space after each
     sys.stdout.write(l)
 print
 

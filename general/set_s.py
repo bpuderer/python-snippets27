@@ -1,6 +1,6 @@
 # set - mutable, unordered, contains distinct hashable objects
 
- 
+
 seta = set(["purple", "green", "gold"])
 setb = {"black", "gold"}
 setc = set(("purple", "green", "black", "gold"))
@@ -41,3 +41,20 @@ seta.discard("green")
 print "set a after discarding green which may/may not be a member:", seta
 
 print "set z:", setz
+
+print '---'
+
+def unique_elements_2d_array(lst):
+    s = set()
+    for row in lst:
+        for item in row:
+            s.add(item)
+    return len(s)
+
+board = [[0]*4 for _ in range(4)]
+board[0][0] = board[0][3] = board[3][3] = 3
+board[0][2] = 9
+board[1][0] = board[1][1] = 42
+board[1][2] = board[2][1] = 28
+print board
+print "number of unique elements:", unique_elements_2d_array(board)
