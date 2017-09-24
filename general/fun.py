@@ -1,3 +1,7 @@
+import re
+from collections import Counter
+
+
 def pair_sum_to_value(seq, value):
     """"test if any pair in sequence sum to value"""
     for i in xrange(len(seq)):
@@ -12,6 +16,17 @@ def is_mirror_number(i):
     if tmp == tmp[::-1]:
         return True
     return False
+
+
+def token_counter():
+    cnt = Counter()
+    lines = ['text text [pass] [error] [pass] pass [fail] text', '[fail] [pass] [pass...']
+    for line in lines:
+        # [TOKEN]
+        tokens = re.findall('\[(.+?)\]', line)
+        for token in tokens:
+            cnt[token] += 1
+    print dict(cnt)
 
 
 if __name__ == "__main__":
@@ -29,3 +44,7 @@ if __name__ == "__main__":
 
     print is_mirror_number(12321)
     print is_mirror_number(1232)
+
+    print '******'
+
+    token_counter()
