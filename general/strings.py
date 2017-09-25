@@ -34,7 +34,10 @@ print '---'
 
 # concat strings in iterable using separator
 print '-'.join('abcd')
-print ''.join(str(i) for i in xrange(10))
+# https://stackoverflow.com/a/9061024
+# list comprehension faster and more memory efficient than
+# generator expression for str.join
+print ''.join([str(i) for i in xrange(10)])
 
 
 print '---'
