@@ -1,4 +1,5 @@
 from collections import namedtuple
+from string import Template
 
 
 # format
@@ -38,6 +39,17 @@ print '-'.join('abcd')
 # list comprehension faster and more memory efficient than
 # generator expression for str.join
 print ''.join([str(i) for i in xrange(10)])
+
+
+print '---'
+
+
+t = Template("Hello my name is $name")
+# substitute(mapping[, **kws])
+# KeyError if placeholder missing from mapping
+print t.substitute(name="Aloysius")
+# no KeyError with safe_substitute if placeholder...
+print t.safe_substitute(foo="bar")
 
 
 print '---'
