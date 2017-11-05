@@ -1,6 +1,6 @@
 ## Python snippets
 
-Collection of python code snippets from built-in functions, standard library, and third party modules.
+Collection of python 2.7 code snippets from built-in functions, standard library, and third party modules.
 
 #### Awesome References
 
@@ -20,4 +20,8 @@ Collection of python code snippets from built-in functions, standard library, an
 
 [Code Like a Pythonista: Idiomatic Python](http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html)
 
-Huge thanks to the following for their presentations, posts, pages, books etc: Raymond Hettinger, Ned Batchelder, Alex Martelli, David Beazley, Doug Hellmann, Harry Percival, Martijn Pieters
+[Learn Python in Y minutes](https://learnxinyminutes.com/docs/python/)
+
+[Awesome python](https://github.com/vinta/awesome-python)
+
+Huge thanks to the following for their presentations, posts, pages, books, tutorials, etc: Raymond Hettinger, Ned Batchelder, Alex Martelli, David Beazley, Doug Hellmann, Harry Percival, Martijn Pieters
