@@ -1,5 +1,6 @@
 from datetime import datetime
 from collections import namedtuple
+from itertools import combinations
 
 
 # https://stackoverflow.com/a/9044111
@@ -13,3 +14,9 @@ def overlap_days(r1, r2):
     delta = (earliest_end - latest_start).days + 1
     overlap = max(0, delta)
     return overlap
+
+def ranges_overlap(seq):
+    for r1, r2 in combinations(seq, 2):
+        if overlap_days(r1, r2):
+            return True
+    return False
