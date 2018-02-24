@@ -1,1 +1,6 @@
-<a>2</a>
+<?xml version="1.0"?>
+<a>
+  <b>b val 1</b>
+  <b>b val 2</b>
+  <c>c val</c>
+</a>

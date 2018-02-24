@@ -1,1 +1,5 @@
-<a>z</a>
+<?xml version="1.0"?>
+<a>
+  <c>c val</c>
+  <b>b val</b>
+</a>
