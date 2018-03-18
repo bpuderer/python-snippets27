@@ -12,6 +12,8 @@ print "and {} for {} completely {}".format("now", "something", "different")
 print "and {when} for {1} completely {0}".format("different", "something", when="now")
 print "and {0[0]} for {0[1]} completely {0[2]}".format(words)
 
+print "use doubling to include curly brace {}: {{ }}".format("chars")
+
 print "{:0>+8.2f}".format(3.14159)
 
 Point = namedtuple('Point', ['x', 'y'])
