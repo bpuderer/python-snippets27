@@ -17,7 +17,7 @@ def quarter_start_month(quarter):
     """month that starts quarter for Gregorian calendar: Jan, Apr, Jul, Oct"""
     if quarter not in range(1, 5):
         raise ValueError("invalid quarter")
-    return 3 * (quarter - 1) + 1
+    return 3 * quarter - 2
 
 def next_quarter(year, quarter):
     """return next quarter for Gregorian calendar"""
@@ -44,10 +44,7 @@ def get_quarter(month):
     """return quarter for month"""
     if month not in range(1, 13):
         raise ValueError("invalid month")
-    # https://stackoverflow.com/a/1406182
-    # User: Alex Martelli
-    # https://stackoverflow.com/users/95810/alex-martelli
-    return (month - 1) // 3 + 1
+    return (month + 2) // 3
 
 def next_quarter_broadcast_dates():
     """return dates for next broadcast quarter (from now)"""
