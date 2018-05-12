@@ -1,10 +1,23 @@
-import yaml
+import datetime
+import json
 import pprint
+
+import yaml
+
+
+def serializer(o):
+    if isinstance(o, datetime.datetime):
+        return o.isoformat()
+    elif isinstance(o, datetime.date):
+        return str(o)
+    else:
+        raise TypeError("Unknown type")
+
 
 #http://yaml.org/spec/1.1/#id857168
 parsed_yaml = yaml.load("""
 invoice: 100
-date   : 2015-12-29
+date   : 2015-12-29T08:09:10.011Z
 bill-to: &id001
     name   : Billing Name
     address:
@@ -49,6 +62,12 @@ comments      : >
 
 pprint.pprint(parsed_yaml)
 
-print
+print("********")
+
+# print json.dumps(parsed_yaml, indent=4, separators=(',', ': '), sort_keys=True)
+# print json.dumps(parsed_yaml, indent=4, separators=(',', ': '), sort_keys=True, default=str)
+print(json.dumps(parsed_yaml, indent=4, separators=(',', ': '), sort_keys=True, default=serializer))
+
+print("********")
 
 print yaml.dump(parsed_yaml)
