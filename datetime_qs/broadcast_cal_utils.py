@@ -19,6 +19,12 @@ def quarter_start_month(quarter):
         raise ValueError("invalid quarter")
     return 3 * quarter - 2
 
+def get_quarter(month):
+    """return quarter for month"""
+    if month not in range(1, 13):
+        raise ValueError("invalid month")
+    return (month + 2) // 3
+
 def next_quarter(year, quarter):
     """return next quarter for Gregorian calendar"""
     if quarter not in range(1, 5):
@@ -28,34 +34,33 @@ def next_quarter(year, quarter):
     else:
         return year, quarter+1
 
-def broadcast_quarter_dates(year, quarter):
+def broadcast_quarter_dates(year, quarter, num=1):
     """start and end dates for broadcast quarter"""
     month = quarter_start_month(quarter)
     start = broadcast_month_start(year, month)
 
-    # calculate end of quarter based on start of next quarter
-    year, quarter = next_quarter(year, quarter)
-    month = quarter_start_month(quarter) #maybe have next_quarter return month too?
+    # calculate end of quarter based on start of subsequent quarter
+    for _ in range(num):
+        year, quarter = next_quarter(year, quarter)
+    month = quarter_start_month(quarter) #maybe next_quarter returns month?
     end = broadcast_month_start(year, month) - datetime.timedelta(days=1)
 
     return start, end
 
-def get_quarter(month):
-    """return quarter for month"""
-    if month not in range(1, 13):
-        raise ValueError("invalid month")
-    return (month + 2) // 3
-
-def next_quarter_broadcast_dates():
+def next_quarter_broadcast_dates(num=1, start_offset=0, end_offset=0):
     """return dates for next broadcast quarter (from now)"""
     now = datetime.datetime.today()
     year = now.year
     quarter = get_quarter(now.month)
+
     while True:
-        start, end = broadcast_quarter_dates(year, quarter)
+        start, end = broadcast_quarter_dates(year, quarter, num)
         if now < start:
-            return start, end
+            break
         year, quarter = next_quarter(year, quarter)
+
+    return (start+datetime.timedelta(days=start_offset),
+            end+datetime.timedelta(days=end_offset))
 
 def next_monday():
     """return datetime for next monday"""
