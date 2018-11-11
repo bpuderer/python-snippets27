@@ -31,14 +31,16 @@ def get_quarter(month):
     return d[month]
     # return (month + 2) // 3
 
-def next_quarter(year, quarter):
+def next_quarter(year, quarter, num=1):
     """return next quarter for Gregorian calendar"""
     if quarter not in range(1, 5):
         raise ValueError("invalid quarter")
-    if quarter == 4:
-        return year+1, 1
-    else:
-        return year, quarter+1
+    quarter -= 1 # for mod, div
+    quarter += num
+    year += quarter / 4
+    quarter %= 4
+    quarter += 1 # back
+    return year, quarter
 
 def broadcast_quarter_dates(year, quarter, length=1):
     """start and end dates for broadcast quarter"""
@@ -46,8 +48,7 @@ def broadcast_quarter_dates(year, quarter, length=1):
     start = broadcast_month_start(year, month)
 
     # calculate end of quarter based on start of subsequent quarter
-    for _ in range(length):
-        year, quarter = next_quarter(year, quarter)
+    year, quarter = next_quarter(year, quarter, length)
     month = quarter_start_month(quarter)
     end = broadcast_month_start(year, month) - timedelta(days=1)
 
